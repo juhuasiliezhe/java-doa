@@ -1,0 +1,24 @@
+/*导航条*/
+@charset "utf-8";
+
+.newtheme{
+    background:#2c2c34;
+}
+.navbar-inverse .navbar-brand{
+    color:#feffff;
+}
+.indexname{
+    letter-spacing: 1px;
+    width: 8%;
+}
+
+.thetop{
+    margin-right: 15px;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+    border-radius:2px;
+    background-color: #e77300;
+}
+.navbar-inverse .navbar-nav>li>a{
+    color: #feffff;
+}
