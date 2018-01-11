@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <title>首页</title>
+    <title>登录</title>
     <link rel="stylesheet" href="${base}/static/css/loginstyle.css">
     <script src="${base}/static/jquery/jQuery-2.2.0.min.js"></script>
 </head>
