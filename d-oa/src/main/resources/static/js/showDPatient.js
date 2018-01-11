@@ -31,6 +31,16 @@ function addthetime(){
 
 
     });
+    
+    $("#downappointment").click(function () {
+    	var id=$("#appointmentid").val();
+    	
+    	$.post("/dappointmentController/downMoneyAppointment","id="+id,function(data){
+    		alert(data.code)
+    		$('#searchTable').bootstrapTable( 'refresh');
+    	},"JSON")
+    	
+    });
 
 
 }
@@ -97,8 +107,8 @@ function getData(){
         queryParams : queryParams,
         pageNumber:1,
         //初始化加载第一页，默认第一页
-        pageSize: 15,                       //每页的记录行数（*）
-        pageList: [15,25,50],        //可供选择的每页的行数（*）
+        pageSize: 7,                       //每页的记录行数（*）
+        pageList: [7,15,25],        //可供选择的每页的行数（*）
         uniqueId: "hid",
 
         clickToSelect: true,
@@ -174,6 +184,7 @@ function getData(){
         }],
 
     });
+    $(".columns ").css("display","none");
     // $("#searchTable").css("border","1px solid #333333");
 
 }
@@ -183,13 +194,17 @@ function operateFormatter(value, row, index) {
     return [
         '<button class="btn btn-success yuyue"  data-toggle="modal" data-target="#myModal" style="margin:2px 5px;" >预约</button>',
         '<button class="btn btn-primary xiangqing" style="margin:2px 5px;" >详情</button>',
-        '<button class="btn btn-default shanchu" style="margin:2px 5px;" >删除</button>',
+        '<button class="btn btn-default shanchu" data-toggle="modal" data-target="#myModal2" style="margin:2px 5px;" >删除</button>',
     ].join('');
 }
 var operateEvents = {
     'click .yuyue': function(e, value, row, index) {
         $("#appointmentid").val(row.id);
         $("#appointmentname").html(row.name);
+    } ,
+    'click .shanchu': function(e, value, row, index) {
+    	$("#appointmentid").val(row.id);
+    	$("#appointmentname2").html(row.name);
     } ,
 };
 

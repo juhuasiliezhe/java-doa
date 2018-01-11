@@ -47,8 +47,8 @@ function getData(){
         queryParams : queryParams,
         pageNumber:1,
         //初始化加载第一页，默认第一页
-        pageSize: 15,                       //每页的记录行数（*）
-        pageList: [15,25,50],        //可供选择的每页的行数（*）
+        pageSize: 7,                       //每页的记录行数（*）
+        pageList: [7,15,25],        //可供选择的每页的行数（*）
         uniqueId: "hid",
 
         clickToSelect: true,
@@ -120,6 +120,7 @@ function getData(){
         }],
 
     });
+    $(".columns ").css("display","none");
     // $("#searchTable").css("border","1px solid #333333");
 
 }

@@ -18,10 +18,18 @@ function addthetime(){
         }
 
        $.post("/dappointmentController/addMoneyAppointment","id="+id+"&getmoney="+getmoney+"&putmoney="+putmoney,function(data){
-           alert(data.code)
            $('#searchTable').bootstrapTable( 'refresh');
        },"JSON")
 
+    });
+    $("#downappointment").click(function () {
+    	var id=$("#appointmentid").val();
+    	
+    	$.post("/dappointmentController/downMoneyAppointment","id="+id,function(data){
+    		alert(data.code)
+    		$('#searchTable').bootstrapTable( 'refresh');
+    	},"JSON")
+    	
     });
 
 
@@ -134,13 +142,16 @@ function operateFormatter(value, row, index) {
     }
     return [
         '<button class="btn btn-primary yuyue"  data-toggle="modal" data-target="#myModal" style="margin:2px 5px;" >结算</button>',
-        '<button class="btn btn-default shanchu" style="margin:2px 5px;" >取消预约</button>',
+        '<button class="btn btn-default shanchu" data-toggle="modal"  data-target="#myModal2" style="margin:2px 5px;" >取消预约</button>',
     ].join('');
 }
 var operateEvents = {
     'click .yuyue': function(e, value, row, index) {
         $("#appointmentid").val(row.id);
         $("#appointmentname").html(row.name);
+    } ,
+    'click .shanchu': function(e, value, row, index) {
+    	$("#appointmentid").val(row.id);
     } ,
 };
 
