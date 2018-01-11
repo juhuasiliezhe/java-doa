@@ -5,6 +5,7 @@ $(function () {
     $('.thetop').eq(3).addClass("active");
     getData();
     addthetime();
+    searchwhat();
 });
 function addthetime(){
 
@@ -25,6 +26,12 @@ function addthetime(){
 
 
 }
+function searchwhat(){
+	$("#seach_Date").click(function () {
+			getData();
+           $('#searchTable').bootstrapTable( 'refresh');
+    });
+}
 
 
 
@@ -39,7 +46,6 @@ function getData(){
         url:url,
         showColumns:true,
         strictSearch: true,
-
         pagination:true,
         sortable : true,
         sortName : "id",     //是否启用排序
@@ -47,8 +53,8 @@ function getData(){
         queryParams : queryParams,
         pageNumber:1,
         //初始化加载第一页，默认第一页
-        pageSize: 15,                       //每页的记录行数（*）
-        pageList: [15,25,50],        //可供选择的每页的行数（*）
+        pageSize: 7,                       //每页的记录行数（*）
+        pageList: [7,15,25],        //可供选择的每页的行数（*）
         uniqueId: "hid",
 
         clickToSelect: true,
@@ -69,6 +75,7 @@ function getData(){
             sortable : true,
             sortName : "id",     //是否启用排序
             sortOrder: "desc",
+            toolbar: false,
         }, {
 
             field: 'name',
@@ -114,7 +121,7 @@ function getData(){
         }],
 
     });
-    // $("#searchTable").css("border","1px solid #333333");
+    $(".columns ").css("display","none");
 
 }
 
