@@ -119,6 +119,20 @@ public class DAppointmentController extends BaseController {
         }
         sendOutPrint("code",theStatus);
     }
+    /**
+     * 预约中取消预约
+     * @param dAppointment
+     */
+    @PostMapping("/downMoneyAppointment")
+    public void   downMoneyAppointment(DAppointment dAppointment) {
+    	dAppointment.setStatus(0);
+    	String theStatus="取消成功";
+    	Integer integer = dAppointmentService.addMoneyAppointment(dAppointment);
+    	if (integer==-1){
+    		theStatus="取消失败";
+    	}
+    	sendOutPrint("code",theStatus);
+    }
     @PostMapping("/addbackComment")
     public void   addbackComment(DAppointment dAppointment) {
         dAppointment.setBacktime(DateUtils.getNowTime());
