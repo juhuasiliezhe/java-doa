@@ -40,6 +40,18 @@
         -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         margin-left: 3%;
     }
+    .startTime{
+	    width:137px;
+	    text-align: center;
+	    margin-left: 0;
+	    float: right;
+	    height:34px;
+	    margin-top: 0; 
+	    margin-bottom: 0; 
+    }
+    h2{
+    color: #888;
+    }
 
 </style>
 
@@ -47,12 +59,16 @@
 
 
 <!-- 广告轮播 -->
-<div class="container" style="background: #FFFFFF;height:800px;border-radius:8px;margin-top: 2%">
-    <div style="">
-        <h3>今日工作</h3>
-        <input type="text"  placeholder="选择时间" value="" class="form_datetime theinput startTime"/>
+<div class="container" style="background: #FFFFFF;height:700px;border-radius:8px;margin-top: 2%">
+    
+        <h2>今日工作</h2>
+        <div  style="margin-bottom:5%;">
+        	<button type="button" id="seach_Date" style="float:right;"  class="btn btn-primary">
+                   		 检索
+            </button>
+        	<input type="text"    placeholder="选择时间" value="" class="form_datetime theinput startTime "/>
+        </div>		
             <table id="searchTable"  > </table>
-    </div>
 </div>
 
 
