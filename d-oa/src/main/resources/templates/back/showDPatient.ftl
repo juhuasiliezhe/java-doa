@@ -40,6 +40,18 @@
         -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         margin-left: 3%;
     }
+    h2{
+    color: #888;
+    }
+    .startTime{
+	    width:137px;
+	    text-align: center;
+	    margin-left: 0;
+	    float: right;
+	    height:34px;
+	    margin-top: 0; 
+	    margin-bottom: 0; 
+    }
 
 </style>
 
@@ -47,9 +59,15 @@
 
 
 <!-- 广告轮播 -->
-<div class="container" style="background: #FFFFFF;height:675px;border-radius:8px;margin-top: 2%">
-    <div class="row" style="">
-        <h3>患者信息</h3>
+<div class="container" style="background: #FFFFFF;height:700px;border-radius:8px;margin-top: 2%">
+    <div  style="">
+        <h2>患者信息</h2>
+        <div  style="margin-bottom:5%;">
+        	<button type="button" id="seach_Date" style="float:right;"  class="btn btn-primary">
+                   		 检索
+            </button>
+        	<input type="text"    placeholder="选择时间" value="" class="form_datetime theinput startTime "/>
+        </div>		
             <table id="searchTable"  > </table>
     </div>
 </div>
@@ -73,7 +91,7 @@
             </div>
             <div class="modal-body" style="text-align: center;">
 
-                <div style="margin-bottom: 25px;"> 预约类型&nbsp;&nbsp;&nbsp;&nbsp;
+                <div style="margin-bottom: 25px;margin-right: 6%;"> 预约类型&nbsp;&nbsp;&nbsp;&nbsp;
                     <span>
                         <input class="onlyinput" style="margin-left: 12px;" name="nephropathy" type="radio" value="初诊" />初诊
                         <input class="onlyinput"  style="margin-left: 12px;" name="nephropathy" type="radio" value="复诊" />复诊
@@ -98,7 +116,31 @@
                 <button type="button" style="margin-right: 11%;" class="btn btn-default" data-dismiss="modal">取消
                 </button>
                 <button type="button" id="addappointment" data-dismiss="modal" class="btn btn-primary">
-                    确定
+                  				  确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 删除模态框（Modal） -->
+<div class="modal fade" style="margin-top: 8%" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"  >
+            <div class="modal-header" style="border-bottom: 0;text-align: center;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <input type="hidden" id="appointmentid" />
+                    确定 删除患者：【<span id="appointmentname2">张三</span>】?
+                </h4>
+            </div>
+             
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" style="margin-right: 11%;" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button type="button" id="downappointment" data-dismiss="modal" class="btn btn-primary">
+                  				  确定
                 </button>
             </div>
         </div><!-- /.modal-content -->

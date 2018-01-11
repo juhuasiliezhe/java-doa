@@ -75,7 +75,7 @@
 
 
 
-<!-- 模态框（Modal） -->
+<!-- 结算模态框（Modal） -->
 <div class="modal fade" style="margin-top: 8%" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content"  >
@@ -89,7 +89,6 @@
                 </h4>
             </div>
             <div class="modal-body" style="text-align: center;">
-
 
 
 
@@ -108,6 +107,30 @@
                 <button type="button" style="margin-right: 11%;" class="btn btn-default" data-dismiss="modal">取消
                 </button>
                 <button type="button" id="addappointment" data-dismiss="modal" class="btn btn-primary">
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 取消预约模态框 -->
+<div class="modal fade" style="margin-top: 8%" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"  >
+            <div class="modal-header" style="border-bottom: 0;text-align: center;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" >
+                    <input type="hidden"  />
+                     确定取消预约吗？
+                </h4>
+            </div>
+             
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" style="margin-right: 11%;" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button type="button" id="downappointment" data-dismiss="modal" class="btn btn-primary">
                     确定
                 </button>
             </div>

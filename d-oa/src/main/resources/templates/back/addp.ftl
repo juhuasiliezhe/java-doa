@@ -27,13 +27,13 @@
     </script>
 
 </head>
-<body >
+<body style="background:rgb(247, 247, 247);">
 
-<div class="container"  >
-    <div class="row" >
-        <div class="col-lg-10" >
+<div class="container" style="margin-top: 2%;border-radius: 8px;"  >
+    <div >
+        <div  >
 
-            <form action="${base}/back/addPatient" method="post" class="bootstrap-frm">
+            <form action="${base}/back/addPatient" method="post" style="border: 0px;" class="bootstrap-frm">
                 <h1>添加患者
                     <span></span>
                 </h1>
