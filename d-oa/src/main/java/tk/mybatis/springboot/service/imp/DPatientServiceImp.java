@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import tk.mybatis.springboot.mapper.DPatientMapper;
 import tk.mybatis.springboot.model.DPatient;
+import tk.mybatis.springboot.model.DPatientExample;
+import tk.mybatis.springboot.model.DPatientExample.Criteria;
 import tk.mybatis.springboot.service.DPatientService;
 
 import javax.annotation.Resource;
@@ -31,6 +33,13 @@ public class DPatientServiceImp  implements DPatientService{
 
     public void  addPatient(DPatient dPatient){
         dPatientMapper.insertSelective(dPatient);
+    }
+    
+    public Integer updatePatient(DPatient dPatient){
+    	DPatientExample example=new DPatientExample();
+    	Criteria createCriteria = example.createCriteria();
+    	createCriteria.andIdEqualTo(dPatient.getId());
+    	return dPatientMapper.updateByExampleSelective(dPatient, example);
     }
 
 

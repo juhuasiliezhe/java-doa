@@ -104,6 +104,17 @@ public class DPatientController extends BaseController {
 
     }
 
+    
+    @PostMapping("downpatient")
+    public void   addappointment(DPatient dPatient) {
+        String theStatus="删除成功";
+        dPatient.setStatus(0);
+        Integer integer = dPService.updatePatient(dPatient);
+        if (integer==-1){
+            theStatus="删除失败";
+        }
+        sendOutPrint("code",theStatus);
+    }
 
 
 

@@ -27,4 +27,14 @@ public   interface  DPatientService {
      * @param dPatient
      */
     public void  addPatient(DPatient dPatient);
+    
+    /**
+     * 更改患者的信息
+     *@param dPatient
+     *@return
+     *
+     *@author Alan 创建于: 2018-1-12 上午9:43:28
+     *
+     */
+    public Integer updatePatient(DPatient dPatient);
 }

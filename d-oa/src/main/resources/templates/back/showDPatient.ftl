@@ -43,7 +43,7 @@
     h2{
     color: #888;
     }
-    .startTime{
+    .startTime2{
 	    width:137px;
 	    text-align: center;
 	    margin-left: 0;
@@ -66,7 +66,7 @@
         	<button type="button" id="seach_Date" style="float:right;"  class="btn btn-primary">
                    		 检索
             </button>
-        	<input type="text"    placeholder="选择时间" value="" class="form_datetime theinput startTime "/>
+        	<input type="text"    placeholder="选择时间" value="" class="form_datetime theinput startTime startTime2 "/>
         </div>		
             <table id="searchTable"  > </table>
     </div>

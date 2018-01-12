@@ -35,7 +35,7 @@ function addthetime(){
     $("#downappointment").click(function () {
     	var id=$("#appointmentid").val();
     	
-    	$.post("/dappointmentController/downMoneyAppointment","id="+id,function(data){
+    	$.post("/back/downpatient","id="+id,function(data){
     		alert(data.code)
     		$('#searchTable').bootstrapTable( 'refresh');
     	},"JSON")
