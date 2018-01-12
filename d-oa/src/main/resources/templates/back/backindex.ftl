@@ -108,6 +108,7 @@
                         <li><a class="tabCloseCurrent" href="javascript:void();">关闭当前</a></li>
                         <li><a class="tabCloseAll" href="javascript:void();">全部关闭</a></li>
                         <li><a class="tabCloseOther" href="javascript:void();">除此之外全部关闭</a></li>
+                        
                     </ul>
                 </div>
                 <button class="roll-nav roll-right fullscreen"><i class="fa fa-arrows-alt"></i></button>
