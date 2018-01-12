@@ -93,11 +93,7 @@
                 </button>
                 <nav class="page-tabs menuTabs">
                     <div class="page-tabs-content" style="margin-left: 0px;">
-                        <a href="javascript:void();" class="menuTab active" data-id="/Home/Default">欢迎首页</a>
-                        <a href="javascript:void();" class="menuTab" data-id="/back/backindex" style="padding-right: 15px;">添加患者</a>
-                        <a href="javascript:void();" class="menuTab" data-id="/SystemManage/Organize/Index">管理患者 <i class="fa fa-remove"></i></a>
-                        <a href="javascript:void();" class="menuTab" data-id="/SystemManage/Role/Index">业绩统计<i class="fa fa-remove"></i></a>
-                        <a href="javascript:void();" class="menuTab" data-id="/SystemManage/Role/Index">预约<i class="fa fa-remove"></i></a>
+                         
                     </div>
                 </nav>
                 <button class="roll-nav roll-right tabRight">
