@@ -1,300 +1,365 @@
 <#assign base=request.contextPath />
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html>
 <head>
-    <meta name="keywords" content="keyword1,keyword2,keyword3"></meta>
-    <meta name="description" content="this is my page"></meta>
-    <meta name="content-type" content="text/html; charset=UTF-8"></meta>
-    <title>添加患者</title>
-
-    <link rel="stylesheet" href="${base}/static/xheditor/demos/common.css" type="text/css" media="screen" />
-    <link href="${base}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="${base}/static/css/qikoo.css">
-    <link rel="stylesheet" href="${base}/static/css/store.css">
-    <link rel="stylesheet" href="${base}/static/css/view.css">
-    <script src="${base}/static/jquery/jQuery-2.2.0.min.js"></script>
-    <script src="${base}/static/bootstrap/js/bootstrap.min.js"></script>
-    <script src="${base}/static/js/qikoo.js"></script>
-    <script type="text/javascript">
-        $(function() {
-
-        })
-
-
-
-
-    </script>
+<meta charset="utf-8">
+<title>测试</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="${base}/static/layui/dist/css/layui.css"
+	media="all">
+<style>
+h1,legend {
+	color: #888;
+}
+</style>
 
 </head>
-<body style="background:rgb(247, 247, 247);">
 
-<div class="container" style="margin-top: 2%;border-radius: 8px;"  >
-    <div >
-        <div  >
-
-            <form action="${base}/back/addPatient" method="post" style="border: 0px;" class="bootstrap-frm">
-                <h1>添加患者
-                    <span></span>
-                </h1>
-
-                <label>
-                    <h4>基本信息</h4>
-                    <hr style="border:none;border-top:1px solid;" />
-                </label>
-                <label>
-                    <span>姓名:</span>
-                    <input id="name" type="text" name="name" placeholder="请输入姓名" />
-                </label>
-
-                <label>
-                    <span>性别 :</span>
-                    <input name="sex" type="radio" value="男" />男
-                    <input name="sex" type="radio" value="女" />女
-                    <input name="sex" type="radio" value="未知" />未知
+<body>
 
 
-                    </select>
-                </label>
+	<h1>添加患者</h1>
+	<fieldset class="layui-elem-field layui-field-title"
+		style="margin-top: 20px;">
+		<legend>基本信息</legend>
+	</fieldset>
 
-                <label>
-                    <span>出生年月 :</span>
-                    <input   type="text" name="birthday" placeholder="请输入出生年月" />
-                </label>
 
-                <label>
-                    <span>年龄 :</span>
-                    <input   type="text" name="age" placeholder="请输入年龄" />
-                </label>
-                <label>
-                    <span>监护人 :</span>
-                    <input   type="text" name="keeper" placeholder="请输入监护人" />
-                </label>
-                <label>
-                    <span>职业 :</span>
-                    <input   type="text" name="work" placeholder="请输入职业" />
-                </label>
+	<form class="layui-form" action="">
+		<div class="layui-form-item">
+			<label class="layui-form-label">姓名：</label>
+			<div class="layui-input-inline">
+				<input type="text" name="username" lay-verify="required"
+					placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
 
-                <label>
-                    <h4>患者信息</h4>
-                    <hr style="border:none;border-top:1px solid;" />
-                </label>
+		<div class="layui-form-item">
+			<label class="layui-form-label">性别：</label>
+			<div class="layui-input-block">
+				<input type="radio" name="sex" value="男" title="男" checked="">
+				<input type="radio" name="sex" value="女" title="女"> <input
+					type="radio" name="sex" value="未知" title="未知">
+			</div>
+		</div>
 
-                <label>
-                    <span>患者来源 :</span>
-
-                    <input name="fromwhere" type="radio" value="朋友介绍" />朋友介绍
-                    <input name="fromwhere" type="radio" value="在附近居住/工作" />在附近居住/工作
-                    <input name="fromwhere" type="radio" value="其他" />其他
-
-                </label>
-
-                <label>
-                    <span>备注 :</span>
-                    <input   type="text" name="tip" placeholder="请输入备注" />
-                </label>
-                <label>
-                    <span>初诊日期 :</span>
-                    <input   type="text" name="cometime" placeholder="请输入日期" />
-                </label>
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label">出生日期</label>
+				<div class="layui-input-block">
+					<input type="text" name="date" id="date1" autocomplete="off"
+						class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">年龄：</label>
+				<div class="layui-input-inline">
+					<input type="text" name="number" autocomplete="off"
+						class="layui-input">
+				</div>
+			</div>
+		</div>
 
 
 
-                <label>
-                    <h4>联系方式</h4>
-                    <hr style="border:none;border-top:1px solid;" />
-                </label>
+		<div class="layui-form-item">
+			<label class="layui-form-label">监护人：</label>
+			<div class="layui-input-inline">
+				<input type="text" name="username" lay-verify="required"
+					placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label">职业：</label>
+			<div class="layui-input-inline">
+				<input type="text" name="username" lay-verify="required"
+					placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
 
 
-                <label>
-                    <span>手机号码 :</span>
-                    <input   type="text" name="phone" placeholder="请输入手机号码" />
-                </label>
-
-
-                <label>
-                    <span>电话 :</span>
-                    <input   type="text" name="telephone" placeholder="请输入电话号码" />
-                </label>
-
-                <label>
-                    <span>邮箱 :</span>
-                    <input   type="text" name="email" placeholder="请输入邮箱" />
-                </label>
-
-                <label>
-                    <span>住址 :</span>
-                    <input   type="text" name="address" placeholder="请输入住址" />
-                </label>
+		<!-- ================================ -->
+		<fieldset class="layui-elem-field layui-field-title"
+			style="margin-top: 20px;">
+			<legend>患者信息</legend>
+		</fieldset>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">患者来源：</label>
+			<div class="layui-input-block">
+				<input type="radio" name="wheres" value="朋友介绍 " title="朋友介绍 " checked="">
+				<input type="radio" name="wheres" value="在附近居住/工作" title="在附近居住/工作"> <input
+					type="radio" name="wheres" value="其他" title="其他">
+			</div>
+		</div>
 
 
 
 
-                <label>
-                    <h4>健康状况</h4>
-                    <hr style="border:none;border-top:1px solid;" />
-                </label>
+		<div class="layui-form-item">
+			<label class="layui-form-label">备注：</label>
+			<div class="layui-input-block">
+				<input type="text" name="title" lay-verify="title"
+					autocomplete="off" placeholder="请输入标题" class="layui-input">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label">初诊日期：</label>
+				<div class="layui-input-block">
+					<input type="text" name="date" id="date11" autocomplete="off"
+						class="layui-input">
+				</div>
+			</div>
+			 
+		</div>
+		
+		
+		<!-- ================================ -->
+		<fieldset class="layui-elem-field layui-field-title"
+			style="margin-top: 20px;">
+			<legend>联系方式</legend>
+		</fieldset>
+		
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">手机号码：</label>
+			<div class="layui-input-inline">
+				<input type="text" name="username" lay-verify="required"
+					placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">电话：</label>
+			<div class="layui-input-inline">
+				<input type="text" name="username" lay-verify="required"
+					placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">邮箱：</label>
+			<div class="layui-input-inline">
+				<input type="text" name="username" lay-verify="required"
+					placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">住址：</label>
+			<div class="layui-input-inline">
+				<input type="text" name="username" lay-verify="required"
+					placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		
+		
+		<!-- ================================ -->
+		<fieldset class="layui-elem-field layui-field-title"
+			style="margin-top: 20px;">
+			<legend>健康状况</legend>
+		</fieldset>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">健康现状：</label>
+			<div class="layui-input-block">
+				<input type="radio" name="hao" value="好" title="好" checked="">
+				<input type="radio" name="hao" value="一般" title="一般"> <input
+					type="radio" name="hao" value="差" title="差">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">过敏史：：</label>
+			<div class="layui-input-inline">
+				<input type="text" name="username" lay-verify="required"
+					placeholder="请输入" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">心脏病：</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="like[write]" title="心率不齐"> 
+				<input type="checkbox" name="like[read]" title="冠心病" >
+				 <input type="checkbox" name="like[game]" title="心肌病  ">
+				 <input type="checkbox" name="like[games]" title="起搏器">
+			</div>
+		</div>
+		
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">高血压病：</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="close" lay-skin="switch"
+					lay-text="有|无">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">糖尿病 ：</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="close" lay-skin="switch"
+					lay-text="有|无">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">肾脏病 ：</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="close" lay-skin="switch"
+					lay-text="有|无">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">胃肠溃疡：</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="close" lay-skin="switch"
+					lay-text="有|无">
+			</div>
+		</div>
+		
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">传染病 ：</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="like1[write]" title="流行性腮腺炎 "> 
+				<input type="checkbox" name="like1[read]" title="肝炎" >
+				 <input type="checkbox" name="like1[game]" title="乙肝表面抗原  ">
+				 <input type="checkbox" name="like1[games]" title="艾滋病 ">
+				 <input type="checkbox" name="like1[gamess]" title="其他 ">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">血液病 ：</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="like11[write]" title="血小板减少症炎 "> 
+				<input type="checkbox" name="like11[read]" title="白血病 " >
+				 <input type="checkbox" name="like11[game]" title="再生障碍性贫血">
+				 <input type="checkbox" name="like11[games]" title="艾滋病 ">
+				 <input type="checkbox" name="like11[gamess]" title="其他 ">
+			</div>
+		</div>
+		
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">服用小剂量阿司匹林：</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="close" lay-skin="switch"
+					lay-text="有|无">
+			</div>
+		</div>
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label"></label>
+			<div class="layui-input-block">
+				<textarea placeholder="请输入原因" class="layui-textarea"></textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">是否服用其他药品 ：</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="close" lay-skin="switch"
+					lay-text="有|无">
+			</div>
+		</div>
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label"></label>
+			<div class="layui-input-block">
+				<textarea placeholder="请输入原因" class="layui-textarea"></textarea>
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">口腔麻药反应 ：</label>
+			<div class="layui-input-block">
+				<input type="radio" name="sex1" value="是" title="否" checked="">
+				<input type="radio" name="sex1" value="是" title="否">  
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">是否有其他重大疾病尚未提到 ：</label>
+			<div class="layui-input-block">
+				<input type="radio" name="sex12" value="是" title="否" checked="">
+				<input type="radio" name="sex12" value="是" title="否">  
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">是否空腹：</label>
+			<div class="layui-input-block">
+				<input type="radio" name="sex14" value="是" title="否" checked="">
+				<input type="radio" name="sex14" value="是" title="否">  
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">是否正怀孕：</label>
+			<div class="layui-input-block">
+				<input type="radio" name="sex144" value="是" title="否" checked="">
+				<input type="radio" name="sex144" value="是" title="否">  
+			</div>
+		</div>
+		 
+		  
+	</form>
 
-                <label>
-                    <span>现在身体状况 :</span>
-                    <input name="type" type="radio" value="好" />好
-                    <input name="type" type="radio" value="一般" />一般
-                    <input name="type" type="radio" value="差" />差
-
-                </label>
-
-                <label>
-                    <span>过敏史 :</span>
-                    <textarea   name="allergy" placeholder="请输入过敏史"></textarea>
-                </label>
-
-
-
-
-                <label>
-                    <span>心脏病 :</span>
-                    <input name="heart" type="checkbox" value="心率不齐" />心率不齐
-                    <input name="heart" type="checkbox" value="冠心病" />冠心病
-                    <input name="heart" type="checkbox" value="心肌病" />心肌病
-                    <input name="heart" type="checkbox" value="起搏器" />起搏器
-
-                </label>
-
-
-                <label>
-                    <span>高血压病 :</span>
-                    <input name="hypertension" type="radio" value="有" />有
-                </label>
-
-                <label>
-                    <span>糖尿病 :</span>
-                    <input name="diabetes" type="radio" value="有" />有
-                </label>
-
-                <label>
-                    <span>肾脏病 :</span>
-                    <input name="kidney" type="radio" value="有" />有
-                </label>
-
-                <label>
-                    <span>胃肠溃疡 :</span>
-                    <input name="nephropathy" type="radio" value="有" />有
-                </label>
-
-                <label>
-                    <span>传染病 :</span>
-                    <input name="infectious" type="checkbox" value="流行性腮腺炎" />流行性腮腺炎
-                    <input name="infectious" type="checkbox" value="肝炎" />肝炎
-                    <input name="infectious" type="checkbox" value="乙肝表面抗原" />乙肝表面抗原
-                    <input name="infectious" type="checkbox" value="艾滋病" />艾滋病
-                    <input name="infectious" type="checkbox" value="其他" />其他
-
-                </label>
-                <label>
-                    <span>血液病 :</span>
-                    <input name="blood" type="checkbox" value="血小板减少症" />血小板减少症
-                    <input name="blood" type="checkbox" value="白血病" />白血病
-                    <input name="blood" type="checkbox" value="再生障碍性贫血" />再生障碍性贫血
-                    <input name="blood" type="checkbox" value="其他" />其他
-
-                </label>
-
-                <label>
-                    <span>吸烟史 :</span>
-                    <input  type="text" name="smoke" placeholder="（支/天）" />
-                </label>
-
-                <label>
-                    <span>饮酒史 :</span>
-                    <input id="email" type="text" name="drink" placeholder="（量/天）" />
-                </label>
-
-                <label>
-                    <span>服用小剂量阿司匹林 :</span>
-                    <input  type="radio" value="有" />有
-                </label>
-                <label>
-                    <span></span>
-                    <textarea   name="aspirin" placeholder="请输入原因"></textarea>
-                </label>
-
-                <label>
-                    <span>是否服用其他药品 :</span>
-                    <input  type="radio" value="有" />有
-                </label>
-                <label>
-                    <span></span>
-                    <textarea   name="otherdrug" placeholder="如果有，请输入详情"></textarea>
-                </label>
-
-
-                <label>
-                    <span>口腔麻药反应 :</span>
-                    <input name="anesthetic" type="radio" value="是" />是
-                    <input name="anesthetic" type="radio" value="否" />否
-                </label>
-
-                <label>
-                    <span>是否有其他重大疾病尚未提到 :</span>
-                    <input name="otherdisease" type="radio" value="是" />是
-                    <input name="otherdisease" type="radio" value="否" />否
-                </label>
-                <label>
-                    <span>是否空腹 :</span>
-                    <input name="fasting" type="radio" value="是" />是
-                    <input name="fasting" type="radio" value="否" />否
-                </label>
-                <label>
-                    <span>是否正怀孕 :</span>
-                    <input name="pregnant" type="radio" value="是" />是
-                    <input name="pregnant" type="radio" value="否" />否
-                </label>
-
-                <label style="margin-left: 21%">
-                    <span>&nbsp;</span>
-                    <input type="button" class="button " data-toggle="modal" data-target="#myModal" style="background: #3c8dbc;color: #fff;" value="提交" />
-                </label>
-
-
-
-                <!-- 模态框（Modal） -->
-                <div class="modal fade" style="margin-top: 13%" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content" style="width: 59%">
-                            <div class="modal-header" style="border-bottom: 0;text-align: center;">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    &times;
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">
-                                    确定添加患者吗？
-                                </h4>
-                            </div>
-
-                            <div class="modal-footer" style="text-align: center">
-                                <button type="button" style="margin-right: 11%;" class="btn btn-default" data-dismiss="modal">取消
-                                </button>
-                                <button type="submit" class="btn btn-primary">
-                                    确定
-                                </button>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal -->
-                </div>
-
-
-
-
-                <div style="height:300px">
-                </div>
-            </form>
-
-        </div>
-    </div>
-
-</div>
-
-
-
+	<script src="${base}/static/layui/dist/layui.js" charset="utf-8"></script>
+	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+	<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+  laydate.render({
+    elem: '#date11'
+  });
+  
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+ 
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+  
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+  
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+  
+  
+});
+</script>
 
 </body>
 </html>

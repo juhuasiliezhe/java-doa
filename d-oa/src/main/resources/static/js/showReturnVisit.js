@@ -27,7 +27,6 @@ function  tableReload(table){
 	});
 	 
 	
-	$(".layui-table-page").css("text-align","center");
 }
 function tableonsort(table){
 	table.on('sort(demo)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
