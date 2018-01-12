@@ -5,11 +5,11 @@
   height: 100%;
   overflow: auto;
   z-index: 2;
-  background-color: #34393d;
+  background-color: #242b33;
 }
 
 .lps-menu .layui-nav {
-  background-color: #404549;
+  background-color: #242b33;
   margin-bottom: 140px;
 }
 
@@ -40,7 +40,7 @@
   height: 40px;
   line-height: 40px;
   padding: 0 !important;
-  padding-left: 45px !important;
+  padding-left: 63px !important;
   border-bottom: solid 1px #3c4044;
 }
 
@@ -67,7 +67,7 @@
   }*/
 
 .layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover {
-  border-bottom-color: #6a96df !important;
+  border-bottom-color: #009688 !important;
 }
 
 .layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-this > a:hover {
@@ -75,12 +75,12 @@
 }
 
 .layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd:hover {
-  background-color: #6a96df;
+  background-color: #009688;
   border-left: solid 3px #fab530;
 }
 
 .layui-nav-tree .layui-nav-child dd:hover a {
-  border-bottom-color: #6a96df !important;
+  border-bottom-color: #009688 !important;
 }
 
 .lps-menu .layui-nav-tree .layui-nav-bar {
