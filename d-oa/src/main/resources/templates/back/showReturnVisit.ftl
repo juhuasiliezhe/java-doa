@@ -1,137 +1,122 @@
 <#assign base=request.contextPath />
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>首页</title>
-    <link href="${base}/static/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="${base}/static/bootstrap/bootstraptable/bootstrap-table.css">
-    <link rel="stylesheet" href="${base}/static/bootstrap/css/bootstrap-datetimepicker.min.css">
-    <script src="${base}/static/jquery/jQuery-2.2.0.min.js"></script>
-    <script src="${base}/static/js/bootstrap.min.js"></script>
-    <script src="${base}/static/bootstrap/bootstraptable/bootstrap-table.js"></script>
-    <script src="${base}/static/bootstrap/bootstraptable/bootstrap-table-zh-CN.js"></script>
-    <script src="${base}/static/bootstrap/js/bootstrap-datetimepicker.js"></script>
-    <script src="${base}/static/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
-    <script src="${base}/static/js/showReturnVisit.js"></script>
+  <meta charset="utf-8">
+  <title>测试</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="${base}/static/layui/dist/css/layui.css"  media="all">
+  <style>
+  
+  </style>
+  
 </head>
-<style>
-    .onlyinput{
-        margin-left: 10px;!important;
-    }
-    .theinput{
-        border: 1px solid #CCC;
-        color: #888;
-        height: 28px;
-        line-height: 15px;
-        margin-bottom: 16px;
-        margin-right: 6px;
-        margin-top: 2px;
-        outline: 0 none;
-        padding: 5px 0px 5px 5px;
-        width: 30%;
-        border-radius: 4px;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        margin-left: 3%;
-    }
-    .startTime{
-	    width:137px;
-	    text-align: center;
-	    margin-left: 0;
-	    float: right;
-	    height:34px;
-	    margin-top: 0; 
-	    margin-bottom: 0; 
-    }
-    h2{
-    color: #888;
-    }
+<body>
+ <div class="layui-col-md10" style="margin: 4%;">
+<table lay-filter="demo" class="layui-table" lay-data="{id: 'idTest'}" >
+  <thead>
+    <tr>
+      <th lay-data="{field:'name', width:'8%', templet: '#usernameTpl'}">姓名</th>
+      <th lay-data="{field:'comment', width:'8%'}">预约项目</th>
+      <th lay-data="{field:'backcomment',width:'20%'}">回访内容</th>
+      <th lay-data="{field:'backresult',width:'20%'}">回访结果</th>
+      <th lay-data="{field:'apptime', width:'12%', sort: true}">治疗时间</th>
+      <th lay-data="{field:'gettime', width:'12%', sort: true}">结算时间</th>
+      <th lay-data="{field:'backtime', width:'8%',}">回访时间</th>
+      <th style="text-align: center;" lay-data="{field:'',event: 'setSign', templet: '#backtype',style:'text-align: center;background-color: #009688; color: #fff;'}"></th>
+    </tr>
+  </thead>
+</table>
 
-</style>
-
-<body style="background:rgb(247, 247, 247);">
-
-
-<!-- 广告轮播 -->
-<div class="container" style="background: #FFFFFF;height:675px;border-radius:8px;margin-top: 2%">
-    <div  style="">
-        <h2>回访</h2>
-        <div  style="margin-bottom:5%;">
-        	<button type="button" id="seach_Date" style="float:right;"  class="btn btn-primary">
-                   		 检索
-            </button>
-        	<input type="text"    placeholder="选择时间" value="" class="form_datetime theinput startTime "/>
-        </div>	
-            <table id="searchTable"  > </table>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">单选框</label>
+    <div class="layui-input-block">
+      <input type="radio" name="sex" value="男" title="男" checked="">
+      <input type="radio" name="sex" value="女" title="女">
+      <input type="radio" name="sex" value="禁" title="禁用" disabled="">
     </div>
-</div>
-
-
-
-
-
-<!-- 模态框（Modal） -->
-<div class="modal fade" style="margin-top: 8%" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content"  >
-            <div class="modal-header" style="border-bottom: 0;text-align: center;">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    <input type="hidden" id="appointmentid" />
-                     患者：【<span id="appointmentname">张三</span>】结算
-                </h4>
-            </div>
-            <div class="modal-body" style="text-align: center;">
-
-
-
-
-            <div>回访内容： <input type="text"  style="width: 35%;" placeholder="输入金额" value="" class=" theinput  getmoney"/>
-
-            </div>
-             <div >
-                 回访结果： <input type="text"  style="width: 35%;" placeholder="输入金额" value="" class=" theinput  putmoney"/>
-            </div>
-
-
-
-
-            </div>
-            <div class="modal-footer" style="text-align: center">
-                <button type="button" style="margin-right: 11%;" class="btn btn-default" data-dismiss="modal">取消
-                </button>
-                <button type="button" id="addappointment" data-dismiss="modal" class="btn btn-primary">
-                    确定
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<script type="text/javascript">
-
-
-
-
-    $('.form_datetime').datetimepicker({
-//        minView: "month", //选择日期后，不会再跳转去选择时分秒
-        language:  'zh-CN',
-        format: 'yyyy-mm-dd hh:ii',
-        showDropdowns: true,
-        todayBtn:  1,
-        autoclose: 1,
-    });
+  </div>
+ 
+<script type="text/html" id="usernameTpl">
+  <a class="layui-table-link" target="_blank">{{ d.name }}</a>
+</script>
+<script type="text/html" id="backtype">
+  {{#  if(d.backtype === 2){ }}
+    已回访
+  {{#  } else { }}
+   	回访
+  {{#  } }}
 </script>
 
+<script type="text/html" id="barDemo1">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">工具性按钮</a>
+</script>
+              
+          
+<script src="${base}/static/layui/dist/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  table.reload('idTest', {
+	  url: '/dappointmentController/dappointmentbacklisttest',
+	  method:'post',
+	  where: {order:'id asc'}, //设定异步数据接口的额外参数
+	  //,height: 300
+	});
 
+	
+  table.on('tool(demo)', function(obj){
+	    var data = obj.data;
+	    if(obj.event === 'setSign'){
 
+	    	layer.open({
+	    		type: 1
+	            ,title: false //不显示标题栏
+	            ,closeBtn: false
+	            ,shade: 0.8
+	            ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+	            ,btn: ['火速围观', '残忍拒绝']
+	            ,btnAlign: 'c'
+	            ,moveType: 1 //拖拽模式，0或者1
+	            ,content: '',
+            	yes: function(index, layero){
+                	alert();
+            	    //do something
+            	    layer.close(index); //如果设定了yes回调，需进行手工关闭
+            	  }
+	    	});
+		    
+		    
+	      /* layer.prompt({
+	        formType: 3
+	        ,title: '回访姓名为 ['+ data.name +'] 的患者'
+	        ,value: data.name
+	      }, function(value, index){
+
+	        layer.close(index);
+	        
+	        //这里一般是发送修改的Ajax请求
+	        
+	        //同步更新表格和缓存对应的值
+	        obj.update({
+		          sign: value
+		        });
+	        
+	      }); */
+
+	      
+	    }
+	  });
+
+   
+	  
+   
+});
+</script>
 
 </body>
 </html>

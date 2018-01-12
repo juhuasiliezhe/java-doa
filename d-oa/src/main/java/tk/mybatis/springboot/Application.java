@@ -52,7 +52,8 @@ public class Application extends WebMvcConfigurerAdapter implements CommandLineR
     @RequestMapping("/")
     String home() {
 
-        return "redirect:back/backindex";
+        return "index";
+//        return "redirect:back/backindex";
     }
     //显示声明CommonsMultipartResolver为mutipartResolver
     /**

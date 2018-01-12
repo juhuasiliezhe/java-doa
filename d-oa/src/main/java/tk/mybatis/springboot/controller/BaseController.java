@@ -113,6 +113,7 @@ public class BaseController{
 			Log4j.Log4JOutError(e.getMessage());
 		}
 	}
+	 
 
 	public void pageOutPrint(Page data) {
 		Map<String, Object> ControJsonMap = new HashMap<String, Object>();
@@ -141,6 +142,20 @@ public class BaseController{
 			out.write(buf);
 			out.flush();
 			out.close();
+			}
+		} catch (IOException e) {
+			Log4j.Log4JOutError(e.getMessage());
+		}
+	}
+	public void sendOutPrint1(Object value) {
+		
+		try {
+			PrintWriter out = response.getWriter();
+			char[] buf = JSONObject.fromObject(value).toString().toCharArray();
+			if(buf.length>0){
+				out.write(buf);
+				out.flush();
+				out.close();
 			}
 		} catch (IOException e) {
 			Log4j.Log4JOutError(e.getMessage());

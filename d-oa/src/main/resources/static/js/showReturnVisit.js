@@ -55,7 +55,7 @@ function getData(){
         searchOnEnterKey: true,
         search:true,
         rowStyle: function rowStyle( row, index) {
-            return { css:{'color': '#0000cc'}
+            return { css:{'color': '#666'}
             };
         },
 

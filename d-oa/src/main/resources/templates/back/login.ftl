@@ -108,7 +108,7 @@
     <div class="avtar">
         <img src="/static/images/avtar.png" />
     </div>
-    <form action="${base}/back/backindex" method="get" id="theform">
+    <form action="${base}/" method="get" id="theform">
         <input type="text" class="text" value="username" id="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
         <div class="key">
             <input type="password" value="password" id="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">

@@ -46,5 +46,7 @@ public   interface DAppointmentService {
      * @return
      */
     public List<DAppointment> queryAlldBackAppointment(int pageNum, int pageSize, String order,int did);
+    
+    public List<DAppointment> queryAlldBackAppointmenttest(int pageNum, int pageSize, String order,int did);
      
 }
