@@ -165,7 +165,7 @@ public class DAppointmentController extends BaseController {
     public void   dappointmentbacklisttest(LaytableDate date) {
     	PageHelper page2=new PageHelper();
     	page2.startPage(date.getPage(), date.getLimit());
-    	List<DAppointment> dPatients = dAppointmentService.queryAlldBackAppointmenttest(date.getOrder(),GetCurUser().getId());
+    	List<DAppointment> dPatients = dAppointmentService.queryAlldBackAppointmenttest(date.getStatus(),date.getOrder(),GetCurUser().getId());
     	Page<DAppointment> listCountry = (Page<DAppointment>)dPatients;
     	long total = listCountry.getTotal();
     	LayDates dates=new LayDates(0,"",total,dPatients);

@@ -1,18 +1,19 @@
 package tk.mybatis.springboot.model;
 
+
 public class LaytableDate {
 	
 	private String order;
 	private int page;
 	private int limit;
 	
-	private int status;
+	private String status;
 	
-	
-	public int getStatus() {
+	 
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public String getOrder() {

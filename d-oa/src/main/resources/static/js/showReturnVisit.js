@@ -38,10 +38,11 @@ function statusGet(){
 }
 
 function  tableReload(table){
-	
+	var df=new Array();
+	df.push("1");
+	df.push("3");
+	df.push("2");
 	table.reload('idTest', {
-		
-		
 		initSort: {
 		    field: 'id' //排序字段，对应 cols 设定的各字段名
 		    ,type: 'desc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
@@ -52,8 +53,6 @@ function  tableReload(table){
 		limit:10,
 		where: {order:'id desc',status:1}, //设定异步数据接口的额外参数
 	});
-	 
-	
 }
 
 

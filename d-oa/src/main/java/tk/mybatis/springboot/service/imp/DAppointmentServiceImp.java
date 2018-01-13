@@ -1,6 +1,8 @@
 package tk.mybatis.springboot.service.imp;
 
 import com.github.pagehelper.PageHelper;
+import com.mysql.fabric.xmlrpc.base.Array;
+
 import org.springframework.stereotype.Service;
 import tk.mybatis.springboot.mapper.DAppointmentMapper;
 import tk.mybatis.springboot.mapper.DPatientMapper;
@@ -12,6 +14,8 @@ import tk.mybatis.springboot.service.DPatientService;
 import tk.mybatis.springboot.util.DateUtils;
 
 import javax.annotation.Resource;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,15 +70,19 @@ public class DAppointmentServiceImp implements DAppointmentService {
         List<DAppointment> allByOrder = dAppointmentMapper.selectByExample(example);
         return  allByOrder;
     }
-    public List<DAppointment> queryAlldBackAppointmenttest( String order,int did){
+    public List<DAppointment> queryAlldBackAppointmenttest(String status, String order,int did){
     	
     	
     	DAppointmentExample example =new DAppointmentExample();
     	DAppointmentExample.Criteria criteria = example.createCriteria();
     	criteria.andUpstatusEqualTo(2);
-    	criteria.andStatusNotEqualTo(0);
     	criteria.andDidEqualTo(did);
     	example.setOrderByClause(order);
+    	String[] erInteger=status.split(",");
+    	List<Integer> woIntegers=new ArrayList<Integer>();
+    	for (String string : erInteger) {
+    		woIntegers.add(Integer.parseInt(string));
+		}
     	List<DAppointment> allByOrder = dAppointmentMapper.selectByExample(example);
     	return  allByOrder;
     }
