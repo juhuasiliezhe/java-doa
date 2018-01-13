@@ -24,38 +24,30 @@
 
 package tk.mybatis.springboot.controller.back;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
+
 import tk.mybatis.springboot.controller.BaseController;
 import tk.mybatis.springboot.model.DAppointment;
-import tk.mybatis.springboot.model.DPatient;
 import tk.mybatis.springboot.model.DUser;
 import tk.mybatis.springboot.model.LayDates;
+import tk.mybatis.springboot.model.LaytableDate;
 import tk.mybatis.springboot.model.utils.PageData;
 import tk.mybatis.springboot.service.DAppointmentService;
-import tk.mybatis.springboot.service.DPatientService;
 import tk.mybatis.springboot.util.DateUtils;
 import tk.mybatis.springboot.util.JsonUtils;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Calendar;
-import java.util.List;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 
 /**
- * @author liuzh
- * @since 2015-12-19 11:10
  */
 @Controller
 @RequestMapping("dappointmentController")
@@ -170,10 +162,10 @@ public class DAppointmentController extends BaseController {
         pageOutPrint((Page) dPatients);
     }
     @PostMapping("/dappointmentbacklisttest")
-    public void   dappointmentbacklisttest(String order,int page,int limit) {
+    public void   dappointmentbacklisttest(LaytableDate date) {
     	PageHelper page2=new PageHelper();
-    	page2.startPage(page, limit);
-    	List<DAppointment> dPatients = dAppointmentService.queryAlldBackAppointmenttest(page, limit, order,GetCurUser().getId());
+    	page2.startPage(date.getPage(), date.getLimit());
+    	List<DAppointment> dPatients = dAppointmentService.queryAlldBackAppointmenttest(date.getOrder(),GetCurUser().getId());
     	Page<DAppointment> listCountry = (Page<DAppointment>)dPatients;
     	long total = listCountry.getTotal();
     	LayDates dates=new LayDates(0,"",total,dPatients);

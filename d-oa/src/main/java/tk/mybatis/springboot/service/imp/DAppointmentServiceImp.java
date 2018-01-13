@@ -66,7 +66,7 @@ public class DAppointmentServiceImp implements DAppointmentService {
         List<DAppointment> allByOrder = dAppointmentMapper.selectByExample(example);
         return  allByOrder;
     }
-    public List<DAppointment> queryAlldBackAppointmenttest(int pageNum, int pageSize, String order,int did){
+    public List<DAppointment> queryAlldBackAppointmenttest( String order,int did){
     	
     	
     	DAppointmentExample example =new DAppointmentExample();
@@ -74,6 +74,7 @@ public class DAppointmentServiceImp implements DAppointmentService {
     	criteria.andUpstatusEqualTo(2);
     	criteria.andStatusNotEqualTo(0);
     	criteria.andDidEqualTo(did);
+    	example.setOrderByClause(order);
     	List<DAppointment> allByOrder = dAppointmentMapper.selectByExample(example);
     	return  allByOrder;
     }

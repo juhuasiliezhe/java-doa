@@ -20,14 +20,25 @@
 	<div class="layui-row">
 	<div class="layui-col-md12">
 		<div  class="layui-form " style="margin-top: 1%;">
+		
+		
+		
+		 
+		
+		
 			<div class="layui-form-item">
+				
+				
+				
 				<div class="layui-inline">
+				
 					<label class="layui-form-label">日期选择</label>
 					<div class="layui-input-block">
 						<input type="text" name="date" id="date1" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
+				
 				<div class="layui-inline">
 					<label class="layui-form-label">姓名</label>
 					<div class="layui-input-inline">
@@ -36,9 +47,21 @@
 					</div>
 					<button class="layui-btn">搜索</button>
 				</div>
+				<div class="layui-inline"  id="whatstatus">
 				
-
+					<label class="layui-form-label"></label>
+					<div class="layui-input-block">
+					<input type="checkbox"checked=""   name="status"  value="1" title="回访"> 
+					<input type="checkbox" name="status"     value="2"title="已回访" >
+					</div>
+				</div>
 			</div>
+			
+			
+			
+		
+			
+			
 		</div>
 
  
@@ -46,14 +69,14 @@
 			<thead>
 				<tr>
 					<th lay-data="{type:'checkbox'}"></th>
-					<th lay-data="{field:'id', width:'4%'}">编号</th>
+					<th lay-data="{field:'id', width:'4%', sort: true}">编号</th>
 					<th lay-data="{field:'name', width:'8%', templet: '#usernameTpl'}">姓名</th>
 					<th lay-data="{field:'comment', width:'8%'}">预约项目</th>
 					<th lay-data="{field:'backcomment',width:'20%'}">回访内容</th>
 					<th lay-data="{field:'backresult',width:'20%'}">回访结果</th>
 					<th lay-data="{field:'apptime', width:'10%', sort: true}">治疗时间</th>
 					<th lay-data="{field:'gettime', width:'10%', sort: true}">结算时间</th>
-					<th lay-data="{field:'backtime', width:'10%',}">回访时间</th>
+					<th lay-data="{field:'backtime', width:'10%', sort: true}">回访时间</th>
 					<th style="text-align: center;"lay-data="{field:'',event: 'setSign', templet: '#backtype',style:'text-align: center; '}"></th>
 				</tr>
 			</thead>

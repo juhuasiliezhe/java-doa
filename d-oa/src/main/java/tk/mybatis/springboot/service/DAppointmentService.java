@@ -47,6 +47,6 @@ public   interface DAppointmentService {
      */
     public List<DAppointment> queryAlldBackAppointment(int pageNum, int pageSize, String order,int did);
     
-    public List<DAppointment> queryAlldBackAppointmenttest(int pageNum, int pageSize, String order,int did);
+    public List<DAppointment> queryAlldBackAppointmenttest( String order,int did);
      
 }
