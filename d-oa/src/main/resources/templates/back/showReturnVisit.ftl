@@ -32,7 +32,7 @@
 				
 				<div class="layui-inline">
 				
-					<label class="layui-form-label">日期选择</label>
+					<label class="layui-form-label">回访日期</label>
 					<div class="layui-input-block">
 						<input type="text" name="date" id="date1" autocomplete="off"
 							class="layui-input">

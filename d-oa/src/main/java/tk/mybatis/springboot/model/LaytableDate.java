@@ -9,7 +9,16 @@ public class LaytableDate {
 	
 	private String status;
 	
+	private String times;
+	
+	
 	 
+	public String getTimes() {
+		return times;
+	}
+	public void setTimes(String times) {
+		this.times = times;
+	}
 	public String getStatus() {
 		return status;
 	}

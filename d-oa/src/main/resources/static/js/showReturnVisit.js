@@ -1,4 +1,5 @@
 $(function () {
+	
 	layui.use(['table', 'laydate'], function(){
 		var table = layui.table;
 		var laydate = layui.laydate;
@@ -18,30 +19,28 @@ $(function () {
  
 function statusGet(){
 	$("#whatstatus").click(function(){
-		var event=$(".layui-form-checked");
-		
-		for (var Key in event.point){
-		  var   Websitelogo =event.point+'&'+''+Key+'='+event.point[Key]+'';
-		    alert(Websitelogo)
-		  } 
-		
-		/*for(i in checkeds){
-			var getstatus=checkeds[i].text();
-			
-			
-		}*/
-		
-		
+		var table = layui.table;
+		tableReload(table)
 	})
 	 
 	
 }
 
 function  tableReload(table){
-	var df=new Array();
-	df.push("1");
-	df.push("3");
-	df.push("2");
+	$.ajaxSetup({
+		async:false
+	})
+	var dfdf='0';
+	var times=$("#date1").val();
+	
+	var event=$(".layui-form-checked span").text();
+	if(event.length==3){
+		dfdf='2';
+	}else if(event.length==5){
+		dfdf='0,2';
+	}else if(event.length==2){
+		dfdf='0';
+	}
 	table.reload('idTest', {
 		initSort: {
 		    field: 'id' //排序字段，对应 cols 设定的各字段名
@@ -51,7 +50,7 @@ function  tableReload(table){
 		method:'post',
 		page: true,
 		limit:10,
-		where: {order:'id desc',status:1}, //设定异步数据接口的额外参数
+		where: {order:'id desc',status:dfdf,times:times}, //设定异步数据接口的额外参数
 	});
 }
 

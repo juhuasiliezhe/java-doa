@@ -83,6 +83,7 @@ public class DAppointmentServiceImp implements DAppointmentService {
     	for (String string : erInteger) {
     		woIntegers.add(Integer.parseInt(string));
 		}
+    	criteria.andBacktypeIn(woIntegers);
     	List<DAppointment> allByOrder = dAppointmentMapper.selectByExample(example);
     	return  allByOrder;
     }
