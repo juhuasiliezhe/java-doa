@@ -1,8 +1,10 @@
 $(function () {
 	
-	layui.use(['table', 'laydate'], function(){
+	layui.use(['table', 'laydate','form'], function(){
 		var table = layui.table;
 		var laydate = layui.laydate;
+		var form = layui.form;
+		form.render('radio');
 		laydate.render({
 		    elem: '#date'
 		  });
@@ -23,7 +25,19 @@ function statusGet(){
 	$("#querydata").click(function(){
 		var table = layui.table;
 		tableReload(table)
-	})
+	});
+	
+	$("#addtime").click(function () {
+        var starttime=$(".startTime").val();
+        var getmin=$(".addme").val();
+        if (starttime!=""&&getmin!=""){
+        	
+            var endtime=judgFailTime(starttime,Number(getmin)).split(" ")[1];
+            
+            $(".startTime").val(starttime.split(" ")[0]+" 【"+starttime.split(" ")[1]+"-"+endtime.substring(0,5)+"】");
+        }
+        
+    });
 	
 	
 }
@@ -62,10 +76,20 @@ function pushApp(id){
 		async:false
 	})
 	
-	
+	 
 
     layer.open({
-       content:  $("#thetestt")
+    	title:'预约患者'
+    	,type: 1, 
+    	shadeClose:true,
+    	closeBtn: false
+		,area: ['490px', '380px']
+		,shade: 0.8
+		,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+		,btn: ['完成回访', '取消回访']
+		,btnAlign: 'c'
+		,moveType: 1 //拖拽模式，0或者1
+       ,content:$(".thetestt")
       
       ,yes: function(){
         layer.closeAll();
@@ -91,6 +115,50 @@ function tableonthis(table){
 		  });
 		});
 }
+
+
+/**
+ * 日期加分钟
+ */
+function judgFailTime(data,minute) {
+    var time = new Date(data.replace("-","/"));
+    var b = minute; //分钟数
+    time.setMinutes(time.getMinutes() + b, time.getSeconds(), 0);
+    return dateToString(time)
+    //如何将b的分钟数加到上面的时间上？？？？？
+}
+
+/**
+ * 日期格式转字符串
+ * @param now
+ * @returns {string}
+ */
+function dateToString(now){
+    var year = now.getFullYear();
+    var month =(now.getMonth() + 1).toString();
+    var day = (now.getDate()).toString();
+    var hour = (now.getHours()).toString();
+    var minute = (now.getMinutes()).toString();
+    var second = (now.getSeconds()).toString();
+    if (month.length == 1) {
+        month = "0" + month;
+    }
+    if (day.length == 1) {
+        day = "0" + day;
+    }
+    if (hour.length == 1) {
+        hour = "0" + hour;
+    }
+    if (minute.length == 1) {
+        minute = "0" + minute;
+    }
+    if (second.length == 1) {
+        second = "0" + second;
+    }
+    var dateTime = year + "-" + month + "-" + day +" "+ hour +":"+minute+":"+second;
+    return dateTime;
+}
+
 
 
 

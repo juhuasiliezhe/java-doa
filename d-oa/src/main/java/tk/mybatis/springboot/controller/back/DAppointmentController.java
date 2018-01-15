@@ -74,6 +74,7 @@ public class DAppointmentController extends BaseController {
         String theStatus="预约成功";
         System.out.println(theStatus);
         dAppointment.setDid(GetCurUser().getId());
+        dAppointment.setApptime(DateUtils.getNowTime());
         Integer integer = dAppointmentService.addAppointment(dAppointment);
         if (integer==-1){
             theStatus="预约失败";

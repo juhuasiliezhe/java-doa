@@ -59,16 +59,16 @@
 
 		</div>
 
-		<div class="layui-form" id="thetestt" style="display:none">
-			<div class="layui-layer-title" style="cursor: move;">预约患者姓名:【】</div>
+ 
 
-
-			<div class="layui-form-item" pane="">
+		<div class=" thetestt"  style="display:none">
+		<div class="layui-form "  >
+			<div class="layui-form-item" >
 				<label class="layui-form-label">预约类型</label>
 				<div class="layui-input-block">
-					<input type="radio" name="sex" value="初诊" title="初诊" checked="">
+					<input type="radio" name="sex" value="初诊" title="初诊" >
 					<input type="radio" name="sex" value="复诊" title="复诊"> <input
-						type="radio" name="sex" value="不速" title="不速" disabled="">
+						type="radio" name="sex" value="不速" title="不速" >
 				</div>
 			</div>
 
@@ -78,16 +78,16 @@
 					<label class="layui-form-label">预约日期</label>
 					<div class="layui-input-block">
 						<input type="text" name="date" placeholder="输入日期" id="date1"
-							autocomplete="off" class="layui-input">
+							autocomplete="off" class="layui-input startTime">
 					</div>
 				</div>
 				<div class="layui-inline">
 					<label class="layui-form-label">耗时：</label>
 					<div class="layui-input-inline">
 						<input type="text" name="number" placeholder="输入分钟"
-							autocomplete="off" class="layui-input">
+							autocomplete="off" class="layui-input addme">
 					</div>
-					<button class="layui-btn">确定时间</button>
+					<button class="layui-btn" id="addtime">确定时间</button>
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -101,6 +101,7 @@
 
 
 
+		</div>
 		</div>
 
 
