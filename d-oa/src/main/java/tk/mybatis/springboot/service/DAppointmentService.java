@@ -2,6 +2,7 @@ package tk.mybatis.springboot.service;
 
 import tk.mybatis.springboot.model.DAppointment;
 import tk.mybatis.springboot.model.DPatient;
+import tk.mybatis.springboot.model.LaytableDate;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public   interface DAppointmentService {
      */
     public List<DAppointment> queryAlldAppointment(int pageNum, int pageSize, String order);
 
-    public List<DAppointment> queryByRolr(int pageNum, int pageSize, String order,String name,String time,int did);
+    public List<DAppointment> queryByRolr(LaytableDate date,int did);
 
     /**
      * 添加患者
@@ -47,6 +48,6 @@ public   interface DAppointmentService {
      */
     public List<DAppointment> queryAlldBackAppointment(int pageNum, int pageSize, String order,int did);
     
-    public List<DAppointment> queryAlldBackAppointmenttest(String status, String order,int did);
+    public List<DAppointment> queryAlldBackAppointmenttest(LaytableDate date,int did);
      
 }

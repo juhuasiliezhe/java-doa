@@ -2,6 +2,7 @@ package tk.mybatis.springboot.service.imp;
 
 import com.github.pagehelper.PageHelper;
 import com.mysql.fabric.xmlrpc.base.Array;
+import com.mysql.fabric.xmlrpc.base.Data;
 
 import org.springframework.stereotype.Service;
 import tk.mybatis.springboot.mapper.DAppointmentMapper;
@@ -9,6 +10,7 @@ import tk.mybatis.springboot.mapper.DPatientMapper;
 import tk.mybatis.springboot.model.DAppointment;
 import tk.mybatis.springboot.model.DAppointmentExample;
 import tk.mybatis.springboot.model.DPatient;
+import tk.mybatis.springboot.model.LaytableDate;
 import tk.mybatis.springboot.service.DAppointmentService;
 import tk.mybatis.springboot.service.DPatientService;
 import tk.mybatis.springboot.util.DateUtils;
@@ -37,18 +39,16 @@ public class DAppointmentServiceImp implements DAppointmentService {
         List<DAppointment> allByOrder = dAppointmentMapper.findAllByOrder(order,1);
         return  allByOrder;
     }
-    public List<DAppointment> queryByRolr(int pageNum, int pageSize, String order,String name,String time,int did){
-        PageHelper page=new PageHelper();
-        page.startPage(pageNum, pageSize);
+    public List<DAppointment> queryByRolr(LaytableDate date,int did){
 
         DAppointmentExample example =new DAppointmentExample();
         DAppointmentExample.Criteria criteria = example.createCriteria();
-        example.setOrderByClause(order);
-        if (!"".equals(name)&&!"null".equals(name)){
-            criteria.andNameLike("%"+name+"%");
+        example.setOrderByClause(date.getOrder());
+        if (date.getName().length()>0){
+            criteria.andNameLike("%"+date.getName()+"%");
         }
-        if (time!=null){
-            criteria.andApptimeLike("%"+time+"%");
+        if (date.getTimes().length()>0){
+            criteria.andApptimeLike("%"+date.getTimes()+"%");
         }else{
             criteria.andApptimeLike("%"+ DateUtils.getNowTime2()+"%");
         }
@@ -70,18 +70,22 @@ public class DAppointmentServiceImp implements DAppointmentService {
         List<DAppointment> allByOrder = dAppointmentMapper.selectByExample(example);
         return  allByOrder;
     }
-    public List<DAppointment> queryAlldBackAppointmenttest(String status, String order,int did){
-    	
-    	
+    public List<DAppointment> queryAlldBackAppointmenttest(LaytableDate date,int did){
     	DAppointmentExample example =new DAppointmentExample();
     	DAppointmentExample.Criteria criteria = example.createCriteria();
     	criteria.andUpstatusEqualTo(2);
     	criteria.andDidEqualTo(did);
-    	example.setOrderByClause(order);
-    	String[] erInteger=status.split(",");
+    	example.setOrderByClause(date.getOrder());
+    	String[] erInteger=date.getStatus().split(",");
     	List<Integer> woIntegers=new ArrayList<Integer>();
     	for (String string : erInteger) {
     		woIntegers.add(Integer.parseInt(string));
+		}
+    	if (date.getTimes().length()>0) {
+    		criteria.andBacktimeLike("%"+date.getTimes()+"%");
+		}
+    	if (date.getName().length()>0) {
+    		criteria.andNameLike("%"+date.getName()+"%");
 		}
     	criteria.andBacktypeIn(woIntegers);
     	List<DAppointment> allByOrder = dAppointmentMapper.selectByExample(example);

@@ -25,12 +25,16 @@
 package tk.mybatis.springboot.controller.back;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tk.mybatis.springboot.controller.BaseController;
 import tk.mybatis.springboot.model.DAppointment;
 import tk.mybatis.springboot.model.DPatient;
+import tk.mybatis.springboot.model.LayDates;
+import tk.mybatis.springboot.model.LaytableDate;
 import tk.mybatis.springboot.model.utils.PageData;
 import tk.mybatis.springboot.service.DPatientService;
 import tk.mybatis.springboot.util.DateUtils;
@@ -96,14 +100,26 @@ public class DPatientController extends BaseController {
      * @param requestJson
      */
     @PostMapping("/showPatient")
-    public void   showPatient(@RequestBody String requestJson) {
-
-        PageData data= JsonUtils.jsonToPojo(requestJson,PageData.class);
-        List<DPatient> dPatients = dPService.queryAllPatient(GetCurUser().getId(),data.getPageindex(), data.getPageSize(), data.getSortOrders());
-        pageOutPrint((Page) dPatients);
+    public void   showPatient(LaytableDate data) {
+    	List<DPatient> dPatients = dPService.queryAllPatient(GetCurUser().getId(),data.getPage(), data.getLimit(), data.getOrder());
+    	Page<DPatient> listCountry = (Page<DPatient>)dPatients;
+    	long total = listCountry.getTotal();
+    	LayDates dates=new LayDates(0,"",total,dPatients);
+    	
+    	sendOutPrint1(dates);
+    	
+        
 
     }
-
+/*    @PostMapping("/showPatient")
+    public void   showPatient(@RequestBody String requestJson) {
+    	
+    	PageData data= JsonUtils.jsonToPojo(requestJson,PageData.class);
+    	List<DPatient> dPatients = dPService.queryAllPatient(GetCurUser().getId(),data.getPageindex(), data.getPageSize(), data.getSortOrders());
+    	pageOutPrint((Page) dPatients);
+    	
+    }
+*/
     
     @PostMapping("downpatient")
     public void   addappointment(DPatient dPatient) {

@@ -1,163 +1,134 @@
 <#assign base=request.contextPath />
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>首页</title>
-    <link href="${base}/static/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="${base}/static/bootstrap/bootstraptable/bootstrap-table.css">
-    <link rel="stylesheet" href="${base}/static/bootstrap/css/bootstrap-datetimepicker.min.css">
-    <script src="${base}/static/jquery/jQuery-2.2.0.min.js"></script>
-    <script src="${base}/static/js/bootstrap.min.js"></script>
-    <script src="${base}/static/bootstrap/bootstraptable/bootstrap-table.js"></script>
-    <script src="${base}/static/bootstrap/bootstraptable/bootstrap-table-zh-CN.js"></script>
-    <script src="${base}/static/bootstrap/js/bootstrap-datetimepicker.js"></script>
-    <script src="${base}/static/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
-    <script src="${base}/static/js/showDPatient.js"></script>
-</head>
-<style>
-    .onlyinput{
-        margin-left: 10px;!important;
-    }
-    .theinput{
-        border: 1px solid #CCC;
-        color: #888;
-        height: 28px;
-        line-height: 15px;
-        margin-bottom: 16px;
-        margin-right: 6px;
-        margin-top: 2px;
-        outline: 0 none;
-        padding: 5px 0px 5px 5px;
-        width: 30%;
-        border-radius: 4px;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        margin-left: 3%;
-    }
-    h2{
-    color: #888;
-    }
-    .startTime2{
-	    width:137px;
-	    text-align: center;
-	    margin-left: 0;
-	    float: right;
-	    height:34px;
-	    margin-top: 0; 
-	    margin-bottom: 0; 
-    }
+<meta charset="utf-8">
+<title>测试</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="${base}/static/layui/dist/css/layui.css"
+	media="all">
+<script src="${base}/static/jquery/jQuery-2.2.0.min.js"></script>
 
+<style>
 </style>
 
-<body style="background:rgb(247, 247, 247);">
+</head>
+<body>
+	<div class="layui-row">
+		<div class="layui-col-md12">
+			<div class="layui-form " style="margin-top: 1%;">
+				<div class="layui-form-item">
 
 
-<!-- 广告轮播 -->
-<div class="container" style="background: #FFFFFF;height:700px;border-radius:8px;margin-top: 2%">
-    <div  style="">
-        <h2>患者信息</h2>
-        <div  style="margin-bottom:5%;">
-        	<button type="button" id="seach_Date" style="float:right;"  class="btn btn-primary">
-                   		 检索
-            </button>
-        	<input type="text"    placeholder="选择时间" value="" class="form_datetime theinput startTime startTime2 "/>
-        </div>		
-            <table id="searchTable"  > </table>
-    </div>
-</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">姓名</label>
+						<div class="layui-input-inline">
+							<input type="text" id="thename" name="number" autocomplete="off"
+								class="layui-input">
+						</div>
+						<button class="layui-btn" id="querydata">搜索</button>
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+			<table lay-filter="demo" class="layui-table"
+				lay-data="{id: 'idTest'}">
+				<thead>
+					<tr>
+						<th lay-data="{type:'checkbox'}"></th>
+						<th lay-data="{field:'id', width:'4%', sort: true}">编号</th>
+						<th lay-data="{field:'name', width:'8%', templet: '#usernameTpl'}">姓名</th>
+						<th lay-data="{field:'sex', width:'8%'}">性别</th>
+						<th lay-data="{field:'fromwhere',width:'8%'}">患者来源</th>
+						<th lay-data="{field:'cometime',width:'10%'}">初诊日期</th>
+						<th lay-data="{field:'phone', width:'10%', sort: true}">手机号码</th>
+						<th lay-data="{field:'uptime', width:'10%', sort: true}">添加时间</th>
+						<th lay-data="{field:'tip', width:'20%', sort: true}">备注</th>
+						<th style="text-align: center;"
+							lay-data="{field:'',event: 'setSign', templet: '#backtype',style:'text-align: center; '}"></th>
+					</tr>
+				</thead>
+			</table>
+
+		</div>
+
+		<div class="layui-form" id="thetestt" style="display:none">
+			<div class="layui-layer-title" style="cursor: move;">预约患者姓名:【】</div>
+
+
+			<div class="layui-form-item" pane="">
+				<label class="layui-form-label">预约类型</label>
+				<div class="layui-input-block">
+					<input type="radio" name="sex" value="初诊" title="初诊" checked="">
+					<input type="radio" name="sex" value="复诊" title="复诊"> <input
+						type="radio" name="sex" value="不速" title="不速" disabled="">
+				</div>
+			</div>
+
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">预约日期</label>
+					<div class="layui-input-block">
+						<input type="text" name="date" placeholder="输入日期" id="date1"
+							autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">耗时：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="number" placeholder="输入分钟"
+							autocomplete="off" class="layui-input">
+					</div>
+					<button class="layui-btn">确定时间</button>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">预约项目</label>
+				<div class="layui-input-inline">
+					<input type="text" name="username" lay-verify="required"
+						placeholder="请输入" autocomplete="off" class="layui-input">
+				</div>
+			</div>
 
 
 
 
-
-<!-- 模态框（Modal） -->
-<div class="modal fade" style="margin-top: 8%" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content"  >
-            <div class="modal-header" style="border-bottom: 0;text-align: center;">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    <input type="hidden" id="appointmentid" />
-                     预约患者：【<span id="appointmentname">张三</span>】
-                </h4>
-            </div>
-            <div class="modal-body" style="text-align: center;">
-
-                <div style="margin-bottom: 25px;margin-right: 6%;"> 预约类型&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>
-                        <input class="onlyinput" style="margin-left: 12px;" name="nephropathy" type="radio" value="初诊" />初诊
-                        <input class="onlyinput"  style="margin-left: 12px;" name="nephropathy" type="radio" value="复诊" />复诊
-                        <input class="onlyinput" style="margin-left: 12px;" name="nephropathy" type="radio" value="不速" />不速
-                    </span>
-                </div>
-
-
-            <div>预约时间 <input type="text" style="width: 35%;" placeholder="选择时间" value="" class="form_datetime theinput startTime"/>
-
-            </div>
-             <div style="margin-right: 11%;">需要时间
-                <input type="text" class="theinput addme" style="width: 17%;" placeholder="分钟" value="" />
-                <input type="button" class="button " id="addtime" style="background: #3c8dbc;color: #fff;" value="确定" />
-            </div>
+		</div>
 
 
 
-               <div style=""><h4>【预约项目】</h4></div> <textarea class="theinput" id="thecomment"  style="margin-left: 7%;height: 200px;width: 50%"  placeholder="请输入原因"></textarea>
-            </div>
-            <div class="modal-footer" style="text-align: center">
-                <button type="button" style="margin-right: 11%;" class="btn btn-default" data-dismiss="modal">取消
-                </button>
-                <button type="button" id="addappointment" data-dismiss="modal" class="btn btn-primary">
-                  				  确定
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<!-- 删除模态框（Modal） -->
-<div class="modal fade" style="margin-top: 8%" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content"  >
-            <div class="modal-header" style="border-bottom: 0;text-align: center;">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    <input type="hidden" id="appointmentid" />
-                    确定 删除患者：【<span id="appointmentname2">张三</span>】?
-                </h4>
-            </div>
-             
-            <div class="modal-footer" style="text-align: center">
-                <button type="button" style="margin-right: 11%;" class="btn btn-default" data-dismiss="modal">取消
-                </button>
-                <button type="button" id="downappointment" data-dismiss="modal" class="btn btn-primary">
-                  				  确定
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<script type="text/javascript">
-    $('.form_datetime').datetimepicker({
-//        minView: "month", //选择日期后，不会再跳转去选择时分秒
-        language:  'zh-CN',
-        format: 'yyyy-mm-dd hh:ii',
-        showDropdowns: true,
-        todayBtn:  1,
-        autoclose: 1,
-    });
+	</div>
+
+
+
+
+	<script type="text/html" id="usernameTpl">
+  <a class="layui-table-link" target="_blank">{{ d.name }}</a>
+</script>
+	<script type="text/html" id="backtype">
+
+  <a class="layui-btn layui-btn-primary layui-btn-xs" onclick="pushApp({{d.id}})" lay-event="detail">预约</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+  
+</script>
+
+	<script type="text/html" id="barDemo1">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">工具性按钮</a>
 </script>
 
 
+	<script src="${base}/static/layui/dist/layui.js" charset="utf-8"></script>
+	<script src="${base}/static/js/showDPatient.js"></script>
+	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
 
 </body>

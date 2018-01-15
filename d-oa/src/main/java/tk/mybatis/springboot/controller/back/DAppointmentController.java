@@ -89,12 +89,24 @@ public class DAppointmentController extends BaseController {
      * @param requestJson
      */
     @PostMapping("/dappointmentlist")
-    public void   dappointmentlist(@RequestBody String requestJson) {
-        PageData data= JsonUtils.jsonToPojo(requestJson,PageData.class);
-        DUser df=GetCurUser();
-        List<DAppointment> dPatients =  dAppointmentService.queryByRolr( data.getPageindex(),  data.getPageSize(),  data.getSortOrders(), data.getSearchtext(), data.getStartDate(),GetCurUser().getId());
-//        List<DAppointment> dPatients = dAppointmentService.queryAlldAppointment(data.getPageindex(), data.getPageSize(), data.getSortOrders());
-        pageOutPrint((Page) dPatients);
+    public void   dappointmentlist(LaytableDate date) {
+    	PageHelper page2=new PageHelper();
+    	page2.startPage(date.getPage(), date.getLimit());
+    	List<DAppointment> dPatients = dAppointmentService.queryByRolr(date,GetCurUser().getId());
+    	Page<DAppointment> listCountry = (Page<DAppointment>)dPatients;
+    	long total = listCountry.getTotal();
+    	LayDates dates=new LayDates(0,"",total,dPatients);
+    	
+    	sendOutPrint1(dates);
+//    	pageOutPrint((Page) dPatients);
+    }
+    @PostMapping("/dappointmentlist1")
+    public void   dappointmentlist1(@RequestBody String requestJson) {
+//    	PageData data= JsonUtils.jsonToPojo(requestJson,PageData.class);
+//    	DUser df=GetCurUser();
+//    	List<DAppointment> dPatients =  dAppointmentService.queryByRolr( data.getPageindex(),  data.getPageSize(),  data.getSortOrders(), data.getSearchtext(), data.getStartDate(),GetCurUser().getId());
+////        List<DAppointment> dPatients = dAppointmentService.queryAlldAppointment(data.getPageindex(), data.getPageSize(), data.getSortOrders());
+//    	pageOutPrint((Page) dPatients);
     }
 
     /**
@@ -165,7 +177,7 @@ public class DAppointmentController extends BaseController {
     public void   dappointmentbacklisttest(LaytableDate date) {
     	PageHelper page2=new PageHelper();
     	page2.startPage(date.getPage(), date.getLimit());
-    	List<DAppointment> dPatients = dAppointmentService.queryAlldBackAppointmenttest(date.getStatus(),date.getOrder(),GetCurUser().getId());
+    	List<DAppointment> dPatients = dAppointmentService.queryAlldBackAppointmenttest(date,GetCurUser().getId());
     	Page<DAppointment> listCountry = (Page<DAppointment>)dPatients;
     	long total = listCountry.getTotal();
     	LayDates dates=new LayDates(0,"",total,dPatients);

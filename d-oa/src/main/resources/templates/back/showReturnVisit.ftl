@@ -20,16 +20,7 @@
 	<div class="layui-row">
 	<div class="layui-col-md12">
 		<div  class="layui-form " style="margin-top: 1%;">
-		
-		
-		
-		 
-		
-		
 			<div class="layui-form-item">
-				
-				
-				
 				<div class="layui-inline">
 				
 					<label class="layui-form-label">回访日期</label>
@@ -42,10 +33,10 @@
 				<div class="layui-inline">
 					<label class="layui-form-label">姓名</label>
 					<div class="layui-input-inline">
-						<input type="text" name="number" autocomplete="off"
+						<input type="text" id="thename" name="number" autocomplete="off"
 							class="layui-input">
 					</div>
-					<button class="layui-btn">搜索</button>
+					<button class="layui-btn" id="querydata">搜索</button>
 				</div>
 				<div class="layui-inline"  id="whatstatus">
 				

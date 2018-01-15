@@ -23,6 +23,11 @@ function statusGet(){
 		tableReload(table)
 	})
 	 
+	$("#querydata").click(function(){
+		var table = layui.table;
+		tableReload(table)
+	})
+	
 	
 }
 
@@ -32,6 +37,7 @@ function  tableReload(table){
 	})
 	var dfdf='0';
 	var times=$("#date1").val();
+	var thename=$("#thename").val();
 	
 	var event=$(".layui-form-checked span").text();
 	if(event.length==3){
@@ -50,7 +56,7 @@ function  tableReload(table){
 		method:'post',
 		page: true,
 		limit:10,
-		where: {order:'id desc',status:dfdf,times:times}, //设定异步数据接口的额外参数
+		where: {order:'id desc',status:dfdf,times:times,name:thename}, //设定异步数据接口的额外参数
 	});
 }
 
