@@ -123,9 +123,7 @@ input[type="text"] {
 	  border-bottom: 1px solid#484856;
 	  margin-bottom: 3em;
  }
-.key {
-   background: url(/static/images/pass.png) no-repeat 447px 17px;
-}
+
 input[type="submit"]{
   font-size: 30px;
   color: #fff;

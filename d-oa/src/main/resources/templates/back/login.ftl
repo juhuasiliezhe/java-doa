@@ -17,7 +17,6 @@
 <!-- 广告轮播 -->
 <script>
 
-
     $(function () {
         $.ajaxSetup({
             async:false
@@ -47,9 +46,11 @@
         }
         $.post("/duserController/uplogin","username="+username+"&password="+password,function(data){
             if(data.code==-1){
-                alert("用户不存在！");
+            	$(".username").css("background","url(/static/images/pass.png) no-repeat 447px 17px");
+                
             }else if(data.code==0){
-                alert("密码错误！");
+
+                $(".key").css("background","url(/static/images/pass.png) no-repeat 447px 17px");
 
             }else{
                 $("#theform").submit();
@@ -64,14 +65,7 @@
             $('.login-form').remove();
              });
          });
-
-
-
-        
     }
-
-
-
 </script>
 <style>
     #onlogin{
@@ -92,8 +86,6 @@
     -o-border-bottom-right-radius: 15px;
     cursor: pointer;
     }
-
-
 </style>
 <!--SIGN UP-->
 <h1></h1>

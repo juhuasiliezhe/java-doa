@@ -36,6 +36,9 @@ public class DuserServiceImp implements DUserService {
         criteria.andPasswordEqualTo(dUser.getPassword());
         criteria.andStatusNotEqualTo(0);
         List<DUser> dUsers = dUserMapper.selectByExample(example);
+        if (dUsers.size()==0) {
+			return null;
+		}
          
         return dUsers.get(0);
     }

@@ -59,10 +59,11 @@
 					<th lay-data="{type:'checkbox'}"></th>
 					<th lay-data="{field:'id', width:'4%', sort: true}">编号</th>
 					<th lay-data="{field:'name', width:'8%', templet: '#usernameTpl'}">姓名</th>
-					<th lay-data="{field:'apptime', width:'8%'}">预约时间</th>
-					<th lay-data="{field:'type',width:'20%'}">预约类型</th>
-					<th lay-data="{field:'apptime', width:'10%', sort: true}">预约项目</th>
-					<th style="text-align: center;"lay-data="{field:'',event: 'setSign', templet: '#backtype',style:'text-align: center; ',width:'20%'}"></th>
+					<th lay-data="{field:'apptime', width:'15%'}">预约时间</th>
+					<th lay-data="{field:'type',width:'8%'}">预约类型</th>
+					<th lay-data="{field:'comment', width:'20%'}">预约项目</th>
+					<th style="text-align: center;"lay-data="{field:'', templet: '#backtype',style:'text-align: center; '}"></th>
+					<!-- <th style="text-align: center;"lay-data="{field:'',event: 'setSign', templet: '#backtype',style:'text-align: center; '}"></th> -->
 				</tr>
 			</thead>
 		</table>
@@ -70,6 +71,10 @@
 	</div>
 	</div>
 
+
+<script type="text/html" id="backtype1">
+  
+</script>
 
 
 
@@ -80,7 +85,9 @@
   {{#  if(d.upstatus === 2){ }}
    <div style="background-color: #C9C9C9;">已结算</div>
   {{#  } else { }}
-   	<a href="javascript:void()"><div style="background:#009688;color: #fff;">结算</div></a>
+   	<a class="layui-btn  layui-btn-sm" onclick="pushApp({{d.id}},'{{d.name}}')" lay-event="detail">预约</a>
+  <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="edit" onclick="showApp({{d.id}},'{{d.name}}')">查看</a>
+  <a class="layui-btn layui-btn-danger layui-btn-sm" onclick="delApp({{d.id}},'{{d.name}}')" lay-event="del">删除</a>
    	
   {{#  } }}
 </script>

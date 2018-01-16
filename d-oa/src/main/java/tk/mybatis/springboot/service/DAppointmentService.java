@@ -27,7 +27,7 @@ public   interface DAppointmentService {
     public List<DAppointment> queryByRolr(LaytableDate date,int did);
 
     /**
-     * 添加患者
+     * 添加预约
      * @param dAppointment
      */
     public Integer  addAppointment(DAppointment  dAppointment);

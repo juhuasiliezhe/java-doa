@@ -233,15 +233,9 @@ h1,legend {
 		 
 		
 		<div class="layui-form-item">
+			 
 			<div class="layui-inline">
-				<label class="layui-form-label">是否服用其他药品 ：</label>
-				<div class="layui-input-block">
-					<input type="checkbox" name="" lay-skin="switch"
-					lay-text="有|无">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label">详情：</label>
+				<label class="layui-form-label">是否服用其他药品：</label>
 				<div class="layui-input-inline">
 					<input type="text" name="otherdrug" autocomplete="off"
 						class="layui-input">

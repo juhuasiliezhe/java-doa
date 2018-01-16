@@ -71,7 +71,7 @@
     </span>
   </div>
   <div class="lps-iframe">
-    <iframe id="lps-iframe" src="${base}/back/patient.html"></iframe>
+    <iframe id="lps-iframe" src="${base}/dappointmentController/showDAppointment.html"></iframe>
   </div>
 </div>
 

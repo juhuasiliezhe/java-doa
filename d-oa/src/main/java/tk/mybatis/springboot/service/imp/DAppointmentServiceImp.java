@@ -10,6 +10,7 @@ import tk.mybatis.springboot.mapper.DPatientMapper;
 import tk.mybatis.springboot.model.DAppointment;
 import tk.mybatis.springboot.model.DAppointmentExample;
 import tk.mybatis.springboot.model.DPatient;
+import tk.mybatis.springboot.model.DPatientExample;
 import tk.mybatis.springboot.model.LaytableDate;
 import tk.mybatis.springboot.service.DAppointmentService;
 import tk.mybatis.springboot.service.DPatientService;
@@ -31,6 +32,9 @@ import java.util.List;
 public class DAppointmentServiceImp implements DAppointmentService {
     @Resource
     private DAppointmentMapper dAppointmentMapper;
+    
+    @Resource
+    private DPatientMapper dPatientMapper;
 
 
     public List<DAppointment> queryAlldAppointment(int pageNum, int pageSize, String order){
@@ -93,8 +97,20 @@ public class DAppointmentServiceImp implements DAppointmentService {
     }
 
     public Integer  addAppointment(DAppointment dPatient){
-
-        int i = dAppointmentMapper.insertSelective(dPatient);
+    	
+    	
+    	DPatientExample example =new DPatientExample();
+    	DPatientExample.Criteria criteria = example.createCriteria();
+        criteria.andIdEqualTo(dPatient.getPid());
+    	
+        int i =-1;
+    	List<DPatient> selectByExample = dPatientMapper.selectByExample(example);
+    	if (selectByExample.size()>0) {
+    		if (selectByExample.get(0).getDid()==dPatient.getDid()) {
+    			i = dAppointmentMapper.insertSelective(dPatient);
+			}
+			
+		}
         return  i;
     }
 

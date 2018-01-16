@@ -30,16 +30,37 @@ public class DPatientServiceImp  implements DPatientService{
         List<DPatient> allByOrder = dPatientMapper.findAllByOrder(order,did);
         return  allByOrder;
     }
+    public DPatient queryOnePatient( int id){
+    	DPatientExample example=new DPatientExample();
+    	Criteria createCriteria = example.createCriteria();
+    	createCriteria.andIdEqualTo(id);
+    	List<DPatient> allByOrder = dPatientMapper.selectByExample(example);
+    	return  allByOrder.get(0);
+    }
 
     public void  addPatient(DPatient dPatient){
         dPatientMapper.insertSelective(dPatient);
     }
     
-    public Integer updatePatient(DPatient dPatient){
-    	DPatientExample example=new DPatientExample();
-    	Criteria createCriteria = example.createCriteria();
-    	createCriteria.andIdEqualTo(dPatient.getId());
-    	return dPatientMapper.updateByExampleSelective(dPatient, example);
+    
+    
+    
+    public Integer updatePatient(DPatient dPatient,int did){
+    	DPatientExample example1=new DPatientExample();
+    	Criteria createCriteria1 = example1.createCriteria();
+    	createCriteria1.andIdEqualTo(dPatient.getId());
+    	createCriteria1.andDidEqualTo(did);
+    	List<DPatient> selectByExample = dPatientMapper.selectByExample(example1);
+    	if (selectByExample.size()>0) {
+    		DPatientExample example=new DPatientExample();
+        	Criteria createCriteria = example.createCriteria();
+        	createCriteria.andIdEqualTo(dPatient.getId());
+        	return dPatientMapper.updateByExampleSelective(dPatient, example);
+    		
+			
+		}
+    	
+    	return -1;
     }
 
 

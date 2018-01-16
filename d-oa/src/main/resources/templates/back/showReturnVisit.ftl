@@ -65,7 +65,7 @@
 					<th lay-data="{field:'comment', width:'8%'}">预约项目</th>
 					<th lay-data="{field:'backcomment',width:'20%'}">回访内容</th>
 					<th lay-data="{field:'backresult',width:'20%'}">回访结果</th>
-					<th lay-data="{field:'apptime', width:'10%', sort: true}">治疗时间</th>
+					<th lay-data="{field:'apptime', width:'10%', sort: true}">预约时间</th>
 					<th lay-data="{field:'gettime', width:'10%', sort: true}">结算时间</th>
 					<th lay-data="{field:'backtime', width:'10%', sort: true}">回访时间</th>
 					<th style="text-align: center;"lay-data="{field:'',event: 'setSign', templet: '#backtype',style:'text-align: center; '}"></th>

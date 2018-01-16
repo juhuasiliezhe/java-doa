@@ -21,7 +21,15 @@ public   interface  DPatientService {
      * @return
      */
     public List<DPatient> queryAllPatient(int did,int pageNum, int pageSize, String order);
-
+	/**
+	 * 根据Id查询患者信息；
+	 *@param id
+	 *@return
+	 *
+	 *@author Alan 创建于: 2018-1-16 下午1:09:06
+	 *
+	 */
+    public DPatient queryOnePatient( int id);
     /**
      * 添加患者
      * @param dPatient
@@ -36,5 +44,5 @@ public   interface  DPatientService {
      *@author Alan 创建于: 2018-1-12 上午9:43:28
      *
      */
-    public Integer updatePatient(DPatient dPatient);
+    public Integer updatePatient(DPatient dPatient,int did);
 }

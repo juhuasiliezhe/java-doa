@@ -77,10 +77,35 @@ public class DPatientController extends BaseController {
      */
     @PostMapping("/addPatient")
     public String  addPatient(DPatient dPatient) {
+    	dPatient.setHypertension(setOff(dPatient.getHypertension()));
+    	dPatient.setDiabetes(setOff(dPatient.getDiabetes())); 
+    	dPatient.setKidney(setOff(dPatient.getKidney())); 
+    	dPatient.setNephropathy(setOff(dPatient.getNephropathy()));
         dPatient.setDid(GetCurUser().getId());
         dPatient.setUptime(DateUtils.getNowTime());
         dPService.addPatient(dPatient);
         return   "back/showDPatient";
+    }
+    /**
+     * 修改患者信息
+     * @param dPatient
+     * @return
+     */
+    @PostMapping("/updatePatient")
+    public String  updatePatient(DPatient dPatient) {
+    	
+    	dPatient.setHypertension(setOff(dPatient.getHypertension()));
+    	dPatient.setDiabetes(setOff(dPatient.getDiabetes())); 
+    	dPatient.setKidney(setOff(dPatient.getKidney())); 
+    	dPatient.setNephropathy(setOff(dPatient.getNephropathy()));
+    	dPService.updatePatient(dPatient, GetCurUser().getId());
+    	return   "back/showDPatient";
+    }
+    public String setOff(String get){
+    	if (get==null) {
+    		get="OFF";
+		}
+    	return get;
     }
 
     /**
@@ -107,9 +132,13 @@ public class DPatientController extends BaseController {
     	LayDates dates=new LayDates(0,"",total,dPatients);
     	
     	sendOutPrint1(dates);
-    	
-        
 
+    }
+    @PostMapping("/queryOnePatient")
+    public void   queryOnePatient(int id) {
+    	 DPatient queryOnePatient = dPService.queryOnePatient(id);
+    	 sendOutPrint("data",queryOnePatient);
+    	
     }
 /*    @PostMapping("/showPatient")
     public void   showPatient(@RequestBody String requestJson) {
@@ -125,7 +154,7 @@ public class DPatientController extends BaseController {
     public void   addappointment(DPatient dPatient) {
         String theStatus="删除成功";
         dPatient.setStatus(0);
-        Integer integer = dPService.updatePatient(dPatient);
+        Integer integer = dPService.updatePatient(dPatient,GetCurUser().getId());
         if (integer==-1){
             theStatus="删除失败";
         }
