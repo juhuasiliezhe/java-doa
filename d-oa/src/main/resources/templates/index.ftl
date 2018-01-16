@@ -34,12 +34,12 @@
         <i class="iconfont icon-augiclingdaihou"></i><span class="menu-title">今日工作</span>
       </a>
       <dl class="layui-nav-child">
-        <dd lps-menu="${base}/dappointmentController/showDAppointment.html"><a href="javascript:;">今日预约</a></dd>
+        <dd class="layui-this" lps-menu="${base}/dappointmentController/showDAppointment.html"><a href="javascript:;">今日预约</a></dd>
         <dd lps-menu="${base}/dappointmentController/showReturnVisit.html"><a href="javascript:;">今日回访</a></dd>
       </dl>
     </li>
      
-    <li class="layui-nav-item ">
+    <li class="layui-nav-item layui-nav-itemed">
       <a href="javascript:;">
         <i class="iconfont icon-yonghu"></i><span class="menu-title">患者管理</span>
       </a>

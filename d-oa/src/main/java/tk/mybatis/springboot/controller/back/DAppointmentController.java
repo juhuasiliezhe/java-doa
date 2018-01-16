@@ -73,6 +73,7 @@ public class DAppointmentController extends BaseController {
     public void   addappointment(DAppointment dAppointment) {
         String theStatus="预约成功";
         dAppointment.setDid(GetCurUser().getId());
+        dAppointment.setUpstatus(1);
         Integer integer = dAppointmentService.addAppointment(dAppointment);
         if (integer==-1){
             theStatus="预约失败";
@@ -97,7 +98,6 @@ public class DAppointmentController extends BaseController {
     	LayDates dates=new LayDates(0,"",total,dPatients);
     	
     	sendOutPrint1(dates);
-//    	pageOutPrint((Page) dPatients);
     }
     @PostMapping("/dappointmentlist1")
     public void   dappointmentlist1(@RequestBody String requestJson) {

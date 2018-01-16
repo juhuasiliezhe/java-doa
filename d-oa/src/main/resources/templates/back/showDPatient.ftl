@@ -231,13 +231,17 @@ h1,legend {
 
 
 
-		<div class="layui-form-item layui-form-item11">
-			<label class="layui-form-label">备注：</label>
-			<div class="layui-input-inline">
-				<input type="text" name="tip" lay-verify="required"
-					placeholder="请输入" value="<$=data.tip$>" autocomplete="off" class="layui-input">
-			</div>
-		</div>
+		 <div class="layui-form-item layui-form-text layui-form-item11">
+    <label class="layui-form-label">备注：</label>
+    <div class="layui-input-block">
+<input type="text"  name="tip" value="<$=data.tip$>"  lay-verify="required"
+					placeholder="请输入" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+		 
+
+
 
 		 
 		<div class="layui-form-item layui-form-item11">

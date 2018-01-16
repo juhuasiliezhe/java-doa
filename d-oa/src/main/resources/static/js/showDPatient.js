@@ -8,43 +8,11 @@ $(function () {
 		var table = layui.table;
 		var laydate = layui.laydate;
 		var form = layui.form;
+		 
 		laydate.render({
-			elem: '#date11', //需显示日期的元素选择器
-			event: 'click', //触发事件
-			format: 'yyyy-MM-dd', //日期格式
-			istime: false, //是否开启时间选择
-			isclear: true, //是否显示清空
-			istoday: true, //是否显示今天
-			issure: true, //是否显示确认
-			festival: true ,//是否显示节日
-			fixed: false, //是否固定在可视区域
-		});
-		laydate.render({
-			elem: '#date12', //需显示日期的元素选择器
-			event: 'click', //触发事件
-			format: 'yyyy-MM-dd', //日期格式
-			istime: false, //是否开启时间选择
-			isclear: true, //是否显示清空
-			istoday: true, //是否显示今天
-			issure: true, //是否显示确认
-			festival: true ,//是否显示节日
-			fixed: false, //是否固定在可视区域
-		});
-		laydate.render({
-			elem: '#date1', //需显示日期的元素选择器
-			event: 'click', //触发事件
-			format: 'yyyy-MM-dd HH:mm', //日期格式
-			istime: false, //是否开启时间选择
-			isclear: true, //是否显示清空
-			istoday: true, //是否显示今天
-			issure: true, //是否显示确认
-			festival: true ,//是否显示节日
-			fixed: false, //是否固定在可视区域
-			choose: function(dates){ //选择好日期的回调
-
-
-			}
-
+			elem: '#date1' //需显示日期的元素选择器
+				,format: 'yyyy-MM-dd HH:mm'//日期格式
+			    ,type: 'datetime'
 		});
 		tableReload(table);
 		tableonthis(table);
@@ -238,8 +206,33 @@ function inputdata(id){
 		}
 		ShowDataLoad(data,".showAll","artListComment");
 
+		
+		var laydate = layui.laydate;
 		var form = layui.form;
 		form.render();
+		laydate.render({
+			elem: '#date11', //需显示日期的元素选择器
+			event: 'click', //触发事件
+			format: 'yyyy-MM-dd', //日期格式
+			istime: false, //是否开启时间选择
+			isclear: true, //是否显示清空
+			istoday: true, //是否显示今天
+			issure: true, //是否显示确认
+			festival: true ,//是否显示节日
+			fixed: false, //是否固定在可视区域
+		});
+		laydate.render({
+			elem: '#date12', //需显示日期的元素选择器
+			event: 'click', //触发事件
+			format: 'yyyy-MM-dd', //日期格式
+			istime: false, //是否开启时间选择
+			isclear: true, //是否显示清空
+			istoday: true, //是否显示今天
+			issure: true, //是否显示确认
+			festival: true ,//是否显示节日
+			fixed: false, //是否固定在可视区域
+		});
+		 
 
 
 	},"JSON")

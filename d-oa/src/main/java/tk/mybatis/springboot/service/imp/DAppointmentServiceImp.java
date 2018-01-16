@@ -56,6 +56,13 @@ public class DAppointmentServiceImp implements DAppointmentService {
         }else{
             criteria.andApptimeLike("%"+ DateUtils.getNowTime2()+"%");
         }
+        String[] erInteger=date.getStatus().split(",");
+        List<Integer> woIntegers=new ArrayList<Integer>();
+        
+        for (String string : erInteger) {
+    		woIntegers.add(Integer.parseInt(string));
+		}
+    	criteria.andUpstatusIn(woIntegers);
         criteria.andStatusNotEqualTo(0);
         criteria.andDidEqualTo(did);
 

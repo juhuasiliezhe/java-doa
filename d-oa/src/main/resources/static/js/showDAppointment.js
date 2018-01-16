@@ -3,18 +3,43 @@ $(function () {
 	layui.use(['table', 'laydate'], function(){
 		var table = layui.table;
 		var laydate = layui.laydate;
-		laydate.render({
-		    elem: '#date'
-		  });
+		 
 		  laydate.render({
 		    elem: '#date1'
+		    	,value:GetDateStr(0)
 		  });
+		  laydate.render({
+			  elem: '#date11'
+		  });
+
 		tableReload(table);
 		tableonthis(table);
 		statusGet();
 		
 	});
+	
 });
+/**
+ * 获取日期
+ * @param AddDayCount
+ * @returns {String}
+ */
+function GetDateStr(AddDayCount) { 
+	var dd = new Date(); 
+	dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+	var y = dd.getFullYear(); 
+	var m = dd.getMonth()+1;//获取当前月份的日期 
+	
+	
+	var d = dd.getDate(); 
+	if(m<10){
+		m="0"+m;
+	}
+	if(d<10){
+		d="0"+d;
+	}
+	return y+"-"+m+"-"+d; 
+} 
 
  
 function statusGet(){
@@ -35,17 +60,18 @@ function  tableReload(table){
 	$.ajaxSetup({
 		async:false
 	})
-	var dfdf='0';
+	var dfdf=null;
 	var times=$("#date1").val();
 	var thename=$("#thename").val();
 	
 	var event=$(".layui-form-checked span").text();
-	if(event.length==3){
+	
+	if(event=="待结算"){
+		dfdf='1';
+	}else if(event=="已结算"){
 		dfdf='2';
-	}else if(event.length==5){
-		dfdf='0,2';
-	}else if(event.length==2){
-		dfdf='0';
+	}else{
+		dfdf='1,2';
 	}
 	table.reload('idTest', {
 		initSort: {
@@ -59,7 +85,114 @@ function  tableReload(table){
 		where: {order:'id desc',status:dfdf,times:times,name:thename}, //设定异步数据接口的额外参数
 	});
 }
+function balances(id,name){
+	$.ajaxSetup({
+		async:false
+	})
 
+	layer.open({
+		type: 1
+		,title: '结算患者【'+name+"】" //不显示标题栏
+		,closeBtn: false
+		,shade: 0.8
+		,area: '400px;'
+		,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+		,btn: ['结算', '取消']
+		,btnAlign: 'c'
+		,moveType: 1 //拖拽模式，0或者1
+		,content:$(".balances")
+
+		,yes: function(index, layero){
+			var backtime=$("#date11").val();
+			var getmoney=$("#allmoney").val();
+	        var putmoney=$("#subtractmoney").val();
+	        if (getmoney==""){
+	            return;
+	        }
+			layer.open({
+				type: 1
+				,title: '提醒~' //不显示标题栏
+				,closeBtn: false
+				,shade: 0.8
+				,area: '400px;'
+				,id: 'LAY_l' //设定一个id，防止重复弹出
+				,btn: ['确定结算', '取消']
+				,btnAlign: 'c'
+				,moveType: 1 //拖拽模式，0或者1
+				,content:'<div style="padding: 20px 100px;">确定结算吗？</div>'
+				,yes: function(index){
+					 $.post("/dappointmentController/addMoneyAppointment","id="+id+"&getmoney="+getmoney+"&putmoney="+putmoney+"&backtime="+backtime,function(data){
+						 
+						 layer.open({
+								id: 'layerDemo1'+data.code //防止重复弹出
+								,content: '<div style="padding: 20px 100px;">'+ data.code +'</div>'
+								,btn: '关闭'
+									,btnAlign: 'c' //按钮居中
+										,shade: 0 //不显示遮罩
+										,yes: function(){
+											var table = layui.table;
+											tableReload(table);
+											layer.closeAll();
+										}
+							});
+						 
+				       },"JSON")
+					 
+					layer.close(index);
+				}
+			});
+			
+
+		}
+	});
+}
+
+function delappointemt(id,name){
+	$.ajaxSetup({
+		async:false
+	})
+
+	layer.open({
+		type: 1
+		,title: '取消预订【'+name+"】" //不显示标题栏
+		,closeBtn: false
+		,shade: 0.8
+		,area: '400px;'
+		,id: 'LAY_laydduipro' //设定一个id，防止重复弹出
+		,btn: ['结算', '取消']
+		,btnAlign: 'c'
+		,moveType: 1 //拖拽模式，0或者1
+		,content:'<div style="padding: 20px 100px;">确定取消预约信息【'+name+'】吗?</div>'
+
+		,yes: function(index, layero){
+			$.post("/dappointmentController/downMoneyAppointment","id="+id,function(data){
+				 layer.open({
+						id: 'layerDedmo1'+data.code //防止重复弹出
+						,content: '<div style="padding: 20px 100px;">'+ data.code +'</div>'
+						,btn: '关闭'
+							,btnAlign: 'c' //按钮居中
+								,shade: 0 //不显示遮罩
+								,yes: function(){
+									var table = layui.table;
+									tableReload(table);
+									layer.closeAll();
+								}
+					});
+				
+			},"JSON")
+			
+			 
+			
+
+		}
+	});
+	
+	
+	
+	
+	
+	
+}
 
 function tableonthis(table){
 	table.on('tool(demo)', function(obj){
