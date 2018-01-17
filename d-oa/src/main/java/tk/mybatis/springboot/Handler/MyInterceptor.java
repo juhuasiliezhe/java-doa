@@ -23,7 +23,7 @@ public class MyInterceptor implements HandlerInterceptor {
 		if(!url.equals("")){  
 			//判斷是否已登录  
 			if(request.getSession().getAttribute("user") == null){  
-				response.sendRedirect(request.getContextPath()+"/duserController/login.html");
+				response.sendRedirect(request.getContextPath()+"/login.html");
 				return false;
 			} 
 		}  

@@ -1,18 +1,16 @@
 package tk.mybatis.springboot.service.imp;
 
-import com.github.pagehelper.PageHelper;
-import org.springframework.stereotype.Service;
-import tk.mybatis.springboot.mapper.DAppointmentMapper;
-import tk.mybatis.springboot.mapper.DUserMapper;
-import tk.mybatis.springboot.model.DAppointment;
-import tk.mybatis.springboot.model.DAppointmentExample;
-import tk.mybatis.springboot.model.DUser;
-import tk.mybatis.springboot.model.DUserExample;
-import tk.mybatis.springboot.service.DAppointmentService;
-import tk.mybatis.springboot.service.DUserService;
+import java.math.BigDecimal;
+import java.util.List;
 
 import javax.annotation.Resource;
-import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import tk.mybatis.springboot.mapper.DUserMapper;
+import tk.mybatis.springboot.model.DUser;
+import tk.mybatis.springboot.model.DUserExample;
+import tk.mybatis.springboot.service.DUserService;
 
 /**
  * 说明：
@@ -41,6 +39,37 @@ public class DuserServiceImp implements DUserService {
 		}
          
         return dUsers.get(0);
+    }
+    public DUser updateDuser(String name,String percent,int uid){
+    	DUserExample example =new DUserExample();
+    	DUserExample.Criteria criteria = example.createCriteria();
+    	criteria.andStatusNotEqualTo(0);
+    	criteria.andIdEqualTo(uid);
+    	DUser user=new DUser();
+    	user.setName(name);
+    	user.setPercent(new BigDecimal(percent));
+    	dUserMapper.updateByExampleSelective(user, example);
+    	List<DUser> dUsers = dUserMapper.selectByExample(example);
+    	if (dUsers.size()==0) {
+    		return null;
+    	}
+    	
+    	return dUsers.get(0);
+    }
+    public DUser updateDuser(String data2,int uid){
+    	DUserExample example =new DUserExample();
+    	DUserExample.Criteria criteria = example.createCriteria();
+    	criteria.andStatusNotEqualTo(0);
+    	criteria.andIdEqualTo(uid);
+    	DUser user=new DUser();
+    	user.setPassword(data2);
+    	dUserMapper.updateByExampleSelective(user, example);
+    	List<DUser> dUsers = dUserMapper.selectByExample(example);
+    	if (dUsers.size()==0) {
+    		return null;
+    	}
+    	
+    	return dUsers.get(0);
     }
     public Integer uplogin(String username){
         DUserExample example =new DUserExample();

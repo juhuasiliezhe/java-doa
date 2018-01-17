@@ -36,25 +36,16 @@ import tk.mybatis.springboot.model.DUser;
 import tk.mybatis.springboot.service.DUserService;
 
 /**
- * 医生操作控制
+ * 医生个人业绩管理
  * @author Alan 创建于: 2018-1-17 下午2:43:43
  *
  */
 @Controller
-@RequestMapping("duserController")
-public class DuserController extends BaseController {
+@RequestMapping("achievement")
+public class AchievementController extends BaseController {
     @Resource
     private DUserService userService;
-    /**
-     * 跳转到登录页面
-     * @return
-     */
-    /*@GetMapping("/login.html")
-    public String  login() {
-
-        return  "back/login";
-    }*/
-
+     
     @PostMapping("/uplogin")
     public void   addPatient(DUser dUser) {
 
@@ -79,49 +70,17 @@ public class DuserController extends BaseController {
         sendOutPrint("code",uplogin);
 
     }
-    @PostMapping("/update.html")
-    public String   update(String name,String percent) {
-    	DUser updateDuser = userService.updateDuser(name, percent, GetCurUser().getId());
-    	if (updateDuser!=null) {
-    		session.setAttribute("user",updateDuser);
-		}
-    	return "back/userdata";
-    }
-    @PostMapping("/updatepassword.html")
-    public void   updatepassword(String data1,String data2) {
-    	DUser updateDuser=null;
-    	String code="原密码错误!";
-    	if (data1.equals(GetCurUser().getPassword())) {
-    		 updateDuser = userService.updateDuser(data2, GetCurUser().getId());
-		}
-    	if (updateDuser!=null) {
-    		session.setAttribute("user",updateDuser);
-    		code="修改成功";
-    	}
-    	
-    	sendOutPrint("code", code);
-    }
 
-    @GetMapping("/gologin.html")
-    public String  login2 () {
+    @GetMapping("/achievement.html")
+    public String  achievement () {
 
-        return "back/backindex";
+        return "back/achievement";
     }
     @GetMapping("/loginout.html")
     public String  loginout () {
         session.setAttribute("user",null);
 
         return "";
-    }
-    @GetMapping("/userdata.html")
-    public String  userdata () {
-    	
-    	return "back/userdata";
-    }
-    @GetMapping("/password.html")
-    public String  password () {
-    	
-    	return "back/password";
     }
 
 

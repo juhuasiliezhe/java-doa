@@ -1,5 +1,7 @@
 package tk.mybatis.springboot.model;
 
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -501,6 +503,66 @@ public class DUserExample {
 
         public Criteria andUptimeNotBetween(String value1, String value2) {
             addCriterion("uptime not between", value1, value2, "uptime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentIsNull() {
+            addCriterion("percent is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentIsNotNull() {
+            addCriterion("percent is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentEqualTo(BigDecimal value) {
+            addCriterion("percent =", value, "percent");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentNotEqualTo(BigDecimal value) {
+            addCriterion("percent <>", value, "percent");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentGreaterThan(BigDecimal value) {
+            addCriterion("percent >", value, "percent");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("percent >=", value, "percent");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentLessThan(BigDecimal value) {
+            addCriterion("percent <", value, "percent");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("percent <=", value, "percent");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentIn(List<BigDecimal> values) {
+            addCriterion("percent in", values, "percent");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentNotIn(List<BigDecimal> values) {
+            addCriterion("percent not in", values, "percent");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("percent between", value1, value2, "percent");
+            return (Criteria) this;
+        }
+
+        public Criteria andPercentNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("percent not between", value1, value2, "percent");
             return (Criteria) this;
         }
     }

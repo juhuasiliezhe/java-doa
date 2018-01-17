@@ -13,6 +13,7 @@ import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -54,6 +55,12 @@ public class Application extends WebMvcConfigurerAdapter implements CommandLineR
 
         return "index";
 //        return "redirect:back/backindex";
+    }
+    
+    @GetMapping("login.html")
+    public String  login() {
+
+        return  "back/login";
     }
     //显示声明CommonsMultipartResolver为mutipartResolver
     /**

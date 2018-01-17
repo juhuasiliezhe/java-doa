@@ -1,5 +1,7 @@
 package tk.mybatis.springboot.model;
 
+import java.math.BigDecimal;
+
 public class DUser {
     private Integer id;
 
@@ -12,8 +14,18 @@ public class DUser {
     private Integer status;
 
     private String uptime;
+    
+    private BigDecimal percent;//提成比例
 
-    public Integer getId() {
+    public BigDecimal getPercent() {
+		return percent;
+	}
+
+	public void setPercent(BigDecimal percent) {
+		this.percent = percent;
+	}
+
+	public Integer getId() {
         return id;
     }
 

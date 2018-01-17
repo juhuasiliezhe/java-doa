@@ -55,9 +55,9 @@
         <i class="iconfont icon-suo"></i><span class="menu-title">个人管理</span>
       </a>
       <dl class="layui-nav-child">
-        <dd ><a href="javascript:;">业绩报表</a></dd>
-        <dd ><a href="javascript:;">修改信息</a></dd>
-        <dd ><a href="javascript:;">修改密码</a></dd>
+        <dd lps-menu="${base}/achievement/achievement.html" ><a href="javascript:;">业绩报表</a></dd>
+        <dd lps-menu="${base}/duserController/userdata.html" ><a href="javascript:;">修改信息</a></dd>
+        <dd lps-menu="${base}/duserController/password.html" ><a href="javascript:;">修改密码</a></dd>
       </dl>
     </li> 
   </ul>
