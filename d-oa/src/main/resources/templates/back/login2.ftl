@@ -11,7 +11,8 @@
         <link rel="stylesheet" type="text/css" href="${base}/static/css/newloginstyle.css" />
 		<script src="${base}/static/js/cufon-yui.js" type="text/javascript"></script>
 		<script src="${base}/static/js/ChunkFive_400.font.js" type="text/javascript"></script>
-		
+		<script src='${base}/static/js/dat.gui.min.js'></script>
+    	<script src="${base}/static/js/backgroundindex.js"></script>
 		 <style>
     
   
@@ -22,15 +23,11 @@
 		</script>
     </head>
     <body>
-    <canvas id=c  style="width:100%;"></canvas>
-	<img src="../images/a-colours-circle-rainbow-HD-Wallpaper.jpg" >
-	<script src="${base}/static/js/dat.gui.min.js"></script>
-    <script src="${base}/static/js/backgroundindex.js"></script>
     
-    <div class="wrapper" style="z-index:10000;position: absolute;bottom: 15%;height:500px;">
+		<div class="wrapper">
 			 
 			<div class="content">
-				<div id="form_wrapper" class="form_wrapper" >
+				<div id="form_wrapper" class="form_wrapper" style="margin-top: 29%;">
 					 
 					<form class="login active" action="${base}/" method="get" id="theform">
 						<h3>Login</h3>
@@ -56,8 +53,7 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-		
-		
+
 		<script src="${base}/static/jquery/jQuery-2.2.0.min.js"></script>
 		<script type="text/javascript">
 		$(function () {
@@ -110,16 +106,5 @@
 	        
 	    }
         </script>
-
-
-
-
-
-
-
-
-
-
-
     </body>
 </html>

@@ -5,10 +5,9 @@
 body{
 	font-family:"Trebuchet MS", "Myriad Pro", Arial, sans-serif;
 	font-size:14px;
-	background:#f4f4f4 url(../images/bg.gif) repeat top left;
 	color:#333;
 	text-shadow:1px 1px 1px #fff;
-	overflow-y:scroll;
+	text-align:center
 }
 h1{
 	font-size:56px;
@@ -31,9 +30,10 @@ p{
 	padding:5px 0px;
 }
 .wrapper{
-	width:960px;
-	margin:20px auto;
-	min-height:550px;
+	width:100%;
+	margin:0 auto;
+	height:400px;
+	
 }
 .box{
 	width:49%;
@@ -67,7 +67,7 @@ a.back{
 }
 .form_wrapper h3{
 	padding:20px 30px 20px 30px;
-	background-color:#444;
+	background-color:#262424;
 	color:#fff;
 	font-size:25px;
 	border-bottom:1px solid #ddd;
@@ -139,7 +139,7 @@ form.forgot_password{
 	background:#feffef;
 }
 .form_wrapper .bottom{
-	background-color:#444;
+	background-color:#262424;
 	border-top:1px solid #ddd;
 	margin-top:20px;
 	clear:both;
@@ -203,7 +203,7 @@ form.forgot_password{
 	-webkit-box-shadow: 0px 0px 2px #fff inset;
 	box-shadow: 0px 0px 2px #fff inset;
 }
-.form_wrapper input[type="submit"]:hover {
+#onlogin:hover {
 	background: #d9d9d9;
 	-moz-box-shadow: 0px 0px 2px #eaeaea inset;
 	-webkit-box-shadow: 0px 0px 2px #eaeaea inset;
