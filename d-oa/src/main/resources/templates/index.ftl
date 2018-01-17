@@ -19,7 +19,7 @@
       <h2 class="title">办公系统</h2>
       <ul class="lps-nav">
         <li>欢迎您，${user.name}</li>
-        <li><span><i class="iconfont icon-moban162"></i></span><span>修改密码</span></li>
+        <li  ><span><i class="iconfont icon-moban162"></i></span><span>修改密码</span></li>
         <li onclick="window.location.href='${base}/duserController/loginout.html'"><span><i class="iconfont icon-tuichu"></i></span><span>退出登录</span></li>
       </ul>
     </div>

@@ -7,29 +7,55 @@
         <meta name="description" content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
         <meta name="keywords" content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript"/>
         
-        <link rel="stylesheet" type="text/css" href="${base}/static/css/login/style.css" />
+		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" type="text/css" href="${base}/static/css/newloginstyle.css" />
+		<script src="${base}/static/js/cufon-yui.js" type="text/javascript"></script>
+		<script src="${base}/static/js/ChunkFive_400.font.js" type="text/javascript"></script>
 		
 		 <style>
+    
   
     </style>
-		 
+		<script type="text/javascript">
+			Cufon.replace('h3',{ textShadow: '1px 1px #000'});
+			Cufon.replace('.back');
+		</script>
     </head>
     <body>
     <canvas id=c  style="width:100%;"></canvas>
+	<img src="../images/a-colours-circle-rainbow-HD-Wallpaper.jpg" >
 	<script src="${base}/static/js/dat.gui.min.js"></script>
     <script src="${base}/static/js/backgroundindex.js"></script>
     
-     <div class="login">
-	<h1>Login</h1>
-    <form action="${base}/" method="post" id="theform">
-    	<input type="text" name="u" id="username" onfocus="onfocusinput(1)"  placeholder="Username" required="required" />
-    	<span class="error"style="display: none;" id="usererror">This is not existed</span>
-        <input type="password" id="password" onfocus="onfocusinput(2)" name="p" placeholder="Password" required="required" />
-        <span class="error" style="display: none;" id="passerror">This is an error</span>
-        
-        <button type="button" id="onlogin" class="btn btn-primary btn-block btn-large">login</button>
-    </form>
-	</div>
+    <div class="wrapper" style="z-index:10000;position: absolute;bottom: 15%;height:500px;">
+			 
+			<div class="content">
+				<div id="form_wrapper" class="form_wrapper" >
+					 
+					<form class="login active" action="${base}/" method="get" id="theform">
+						<h3>Login</h3>
+						<div>
+							<label>Username:</label>
+							<input type="text"  id="username" onfocus="onfocusinput(1)" />
+							<span class="error" id="usererror">This is not existed</span>
+						</div>
+						<div>
+							<label>Password: <a href="javascript:void();" rel="forgot_password" class="forgot linkform">Forgot your password?</a></label>
+							<input type="password"  id="password" onfocus="onfocusinput(2)" />
+							<span class="error" id="passerror">This is an error</span>
+						</div>
+						<div class="bottom">
+							<div class="remember"><input type="checkbox" /><span>Keep me logged in</span></div>
+							<input type="button" id="onlogin" value="Login"></input>
+							<a href="javascript:void();"  rel="register" class="linkform">You don't have an account yet? Register here</a>
+							<div class="clear"></div>
+						</div>
+					</form>
+					 
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
 		
 		
 		<script src="${base}/static/jquery/jQuery-2.2.0.min.js"></script>
@@ -58,9 +84,9 @@
 
 		function onfocusinput(id){
 			if(id==1){
-				$("#usererror").css("display","none");
+				$("#usererror").css("visibility","hidden");
 			}else{
-				$("#passerror").css("display","none");
+				$("#passerror").css("visibility","hidden");
 			}
 		}
 	    function  formdate() {
@@ -72,10 +98,10 @@
 	        $.post("/duserController/uplogin","username="+username+"&password="+password,function(data){
 	            if(data.code==-1){
 		            
-	            	$("#usererror").css("display","block");
+	            	$("#usererror").css("visibility","inherit");
 	            	/* setTimeout("timedCount()",2000) */
 	            }else if(data.code==0){
-	            	$("#passerror").css("display","block");
+	            	$("#passerror").css("visibility","inherit");
 
 	            }else{
 	                $("#theform").submit();
@@ -84,8 +110,16 @@
 	        
 	    }
         </script>
-		
-		 
+
+
+
+
+
+
+
+
+
+
 
     </body>
 </html>

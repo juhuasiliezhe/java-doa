@@ -51,7 +51,7 @@ h1,legend {
 		</div>
 
 		<div class="layui-form-item">
-			<label class="layui-form-label">比例：</label>
+			<label class="layui-form-label">业绩比例：</label>
 			<div class="layui-input-inline">
 				<input type="text" name="percent" lay-verify="required"
 					placeholder="例如：17;则表示17%" value="${user.percent!''}" autocomplete="off" class="layui-input">
