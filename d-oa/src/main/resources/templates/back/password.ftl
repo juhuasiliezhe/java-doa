@@ -27,7 +27,7 @@ h1,legend {
 
 	<fieldset class="layui-elem-field layui-field-title"
 		style="margin-top: 20px;">
-		<legend>基本信息</legend>
+		<legend>修改密码</legend>
 	</fieldset>
 
 

@@ -12,7 +12,7 @@
 
 
 <style>
-h1,legend {
+h2,legend {
 	color: #888;
 }
 .layui-form-item{
@@ -25,7 +25,7 @@ h1,legend {
 <body>
 
 
-	<h1>添加患者</h1>
+	<h2>添加患者</h2>
 	<fieldset class="layui-elem-field layui-field-title"
 		style="margin-top: 20px;">
 		<legend>基本信息</legend>

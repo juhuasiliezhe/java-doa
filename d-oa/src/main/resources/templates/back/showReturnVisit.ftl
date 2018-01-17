@@ -12,13 +12,19 @@
 	media="all">
 <script src="${base}/static/jquery/jQuery-2.2.0.min.js"></script>
 
-<style>
-</style>
+
+
+ 
 
 </head>
 <body>
 	<div class="layui-row">
 	<div class="layui-col-md12">
+	
+	<fieldset class="layui-elem-field layui-field-title"
+		style="margin-top: 20px;">
+		<legend style="color: #888;">今日回复</legend>
+	</fieldset>
 		<div  class="layui-form " style="margin-top: 1%;">
 			<div class="layui-form-item">
 				<div class="layui-inline">

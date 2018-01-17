@@ -26,6 +26,11 @@ h1,legend {
 <body>
 	<div class="layui-row">
 		<div class="layui-col-md12">
+		
+		
+		<fieldset class="layui-elem-field layui-field-title"style="margin-top: 20px;">
+		<legend>患者资料</legend>
+		</fieldset>
 			<div class="layui-form " style="margin-top: 1%;">
 				<div class="layui-form-item">
 
