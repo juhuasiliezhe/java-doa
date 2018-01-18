@@ -254,14 +254,14 @@
 		<div class="layui-form-item layui-form-item11">
 			<label class="layui-form-label">口腔麻药反应 ：</label>
 			<div class="layui-input-block">
-				<input type="radio" name="anesthetic"<$if(data.anesthetic=='是'){$> checked="" <$}$> value="是" title="否" >
+				<input type="radio" name="anesthetic"<$if(data.anesthetic=='是'){$> checked="" <$}$> value="是" title="是" >
 				<input type="radio" name="anesthetic"<$if(data.anesthetic=='否'){$> checked="" <$}$> value="否" title="否">  
 			</div>
 		</div>
 		<div class="layui-form-item layui-form-item11">
 			<label class="layui-form-label">是否有其他重大疾病尚未提到 ：</label>
 			<div class="layui-input-block">
-				<input type="radio" name="otherdisease" <$if(data.otherdisease=='是'){$> checked="" <$}$> value="是" title="否" >
+				<input type="radio" name="otherdisease" <$if(data.otherdisease=='是'){$> checked="" <$}$> value="是" title="是" >
 				<input type="radio" name="otherdisease" <$if(data.otherdisease=='否'){$> checked="" <$}$> value="否" title="否">  
 			</div>
 		</div>
@@ -269,14 +269,14 @@
 		<div class="layui-form-item layui-form-item11">
 			<label class="layui-form-label">是否空腹：</label>
 			<div class="layui-input-block">
-				<input type="radio" name="fasting" <$if(data.fasting=='是'){$> checked="" <$}$> value="是" title="否" >
+				<input type="radio" name="fasting" <$if(data.fasting=='是'){$> checked="" <$}$> value="是" title="是" >
 				<input type="radio" name="fasting" <$if(data.fasting=='否'){$> checked="" <$}$> value="否" title="否">  
 			</div>
 		</div>
 		<div class="layui-form-item layui-form-item11">
 			<label class="layui-form-label">是否怀孕：</label>
 			<div class="layui-input-block">
-				<input type="radio" name="pregnant" <$if(data.pregnant=='是'){$> checked="" <$}$> value="是" title="否" >
+				<input type="radio" name="pregnant" <$if(data.pregnant=='是'){$> checked="" <$}$> value="是" title="是" >
 				<input type="radio" name="pregnant" <$if(data.pregnant=='否'){$> checked="" <$}$> value="否" title="否">  
 			</div>
 		</div>
@@ -539,14 +539,14 @@
 		<div class="layui-form-item layui-form-item11">
 			<label class="layui-form-label">口腔麻药反应 ：</label>
 			<div class="layui-input-block">
-				<input type="radio" name="anesthetic"  value="是" title="否" >
+				<input type="radio" name="anesthetic"  value="是" title="是" >
 				<input type="radio" name="anesthetic"  value="否" title="否">  
 			</div>
 		</div>
 		<div class="layui-form-item layui-form-item11">
 			<label class="layui-form-label">是否有其他重大疾病尚未提到 ：</label>
 			<div class="layui-input-block">
-				<input type="radio" name="otherdisease"   value="是" title="否" >
+				<input type="radio" name="otherdisease"   value="是" title="是" >
 				<input type="radio" name="otherdisease"  value="否" title="否">  
 			</div>
 		</div>
@@ -554,14 +554,14 @@
 		<div class="layui-form-item layui-form-item11">
 			<label class="layui-form-label">是否空腹：</label>
 			<div class="layui-input-block">
-				<input type="radio" name="fasting"   value="是" title="否" >
+				<input type="radio" name="fasting"   value="是" title="是" >
 				<input type="radio" name="fasting"   value="否" title="否">  
 			</div>
 		</div>
 		<div class="layui-form-item layui-form-item11">
 			<label class="layui-form-label">是否怀孕：</label>
 			<div class="layui-input-block">
-				<input type="radio" name="pregnant"   value="是" title="否" >
+				<input type="radio" name="pregnant"   value="是" title="是" >
 				<input type="radio" name="pregnant"   value="否" title="否">  
 			</div>
 		</div>
