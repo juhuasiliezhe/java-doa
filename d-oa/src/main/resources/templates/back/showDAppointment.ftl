@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="${base}/static/layui/dist/css/layui.css"
 	media="all">
 <script src="${base}/static/jquery/jQuery-2.2.0.min.js"></script>
+<script src="${base}/static/jquery/artTemp.js"></script>
 
  
 </head>
@@ -76,7 +77,18 @@
 		
 		
 		<div class="balances"  style="display:none">
-			<div class="layui-form " style="margin-top: 21px;">
+			
+		</div>
+		
+		
+		
+	</div>
+
+
+<script type="text/html" id="jiesuan">
+
+
+<div class="layui-form " style="margin-top: 21px;">
 				<div class="layui-form-item">
 					<label class="layui-form-label">总额：</label>
 					<div class="layui-input-inline">
@@ -102,17 +114,17 @@
 						class="layui-input">
 				</div>
 			</div>
+			<div class="layui-form-item">
+					<label class="layui-form-label">回访内容：</label>
+					<div class="layui-input-block">
+						<textarea type="text" name="title" id="backcomment" style="width: 293px;height: 86px;"  
+							 lay-verify="title"
+							autocomplete="off" class="layui-input"></textarea>
+					</div>
+				</div>
 			 
 		</div>
 			</div>
-		</div>
-		
-		
-		
-	</div>
-
-
-	<script type="text/html" id="backtype1">
   
 </script>
 

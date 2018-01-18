@@ -50,10 +50,16 @@ public class Application extends WebMvcConfigurerAdapter implements CommandLineR
         System.out.println(">>>MyInterceptor1>>>>>>>请求处理之后进行调用，但是在视图被渲染之前（Controller方法调用之后）");
     }
 
-    @RequestMapping("/")
+    @RequestMapping("")
     String home() {
 
         return "index";
+//        return "redirect:back/backindex";
+    }
+    @RequestMapping("index")
+    String index() {
+    	
+    	return "index";
 //        return "redirect:back/backindex";
     }
     

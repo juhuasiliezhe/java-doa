@@ -21,7 +21,7 @@
     
      <div class="login">
 	<h1>Login</h1>
-    <form action="${base}/" method="post" id="theform">
+    <form action="${base}/index" method="post" id="theform">
     	<input type="text" name="u" id="username" onfocus="onfocusinput(1)"  placeholder="Username" required="required" />
     	<span class="error"style="display: none;" id="usererror">This is not existed</span>
         <input type="password" id="password" onfocus="onfocusinput(2)" name="p" placeholder="Password" required="required" />

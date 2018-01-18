@@ -8,9 +8,7 @@ $(function () {
 		    elem: '#date1'
 		    	,value:GetDateStr(0)
 		  });
-		  laydate.render({
-			  elem: '#date11'
-		  });
+		   
 
 		tableReload(table);
 		tableonthis(table);
@@ -89,13 +87,19 @@ function balances(id,name){
 	$.ajaxSetup({
 		async:false
 	})
-
+	
+	
+	var data={
+		df:1
+	}
+	ShowDataLoad(data,".balances","jiesuan");
+	updateFrom();
 	layer.open({
 		type: 1
 		,title: '结算患者【'+name+"】" //不显示标题栏
 		,closeBtn: false
 		,shade: 0.8
-		,area: '400px;'
+		,area: ['490px', '380px']
 		,id: 'LAY_layuipro' //设定一个id，防止重复弹出
 		,btn: ['结算', '取消']
 		,btnAlign: 'c'
@@ -106,6 +110,7 @@ function balances(id,name){
 			var backtime=$("#date11").val();
 			var getmoney=$("#allmoney").val();
 	        var putmoney=$("#subtractmoney").val();
+	        var backcomment=$("#backcomment").val();
 	        if (getmoney==""){
 	            return;
 	        }
@@ -121,7 +126,7 @@ function balances(id,name){
 				,moveType: 1 //拖拽模式，0或者1
 				,content:'<div style="padding: 20px 100px;">确定结算吗？</div>'
 				,yes: function(index){
-					 $.post("/dappointmentController/addMoneyAppointment","id="+id+"&getmoney="+getmoney+"&putmoney="+putmoney+"&backtime="+backtime,function(data){
+					 $.post("/dappointmentController/addMoneyAppointment","backcomment="+backcomment+"&id="+id+"&getmoney="+getmoney+"&putmoney="+putmoney+"&backtime="+backtime,function(data){
 						 
 						 layer.open({
 								id: 'layerDemo1'+data.code //防止重复弹出
@@ -256,5 +261,20 @@ function tableonthis(table){
 		});
 }
 
+function ShowDataLoad(data, name, temp) {
+	var html = template(temp, data);
+	$(name).html(html);
+}
+
+function updateFrom(){
+	var form = layui.form;
+	var laydate = layui.laydate;
+	form.render();
+	   
+  laydate.render({
+	  elem: '#date11'
+  });
+	
+}
 
 

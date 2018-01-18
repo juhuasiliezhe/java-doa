@@ -45,7 +45,6 @@
       </a>
       <dl class="layui-nav-child">
         <dd lps-menu="${base}/back/patient.html" ><a href="javascript:;">患者资料</a></dd>
-        <dd lps-menu="${base}/back/view"><a href="javascript:;">增加患者</a></dd>
       </dl>
     </li>
     

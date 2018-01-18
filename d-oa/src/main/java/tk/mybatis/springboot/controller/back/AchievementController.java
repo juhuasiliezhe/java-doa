@@ -80,7 +80,8 @@ public class AchievementController extends BaseController {
     public String  loginout () {
         session.setAttribute("user",null);
 
-        return "";
+        
+        return "redirect:login.html";
     }
 
 

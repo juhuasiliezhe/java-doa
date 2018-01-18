@@ -83,6 +83,27 @@ public class DAppointmentController extends BaseController {
         }
         sendOutPrint("code",theStatus);
     }
+    /**
+     * 在患者信息中直接结算
+     *@param dAppointment
+     *
+     *@author Alan 创建于: 2018-1-18 上午11:42:14
+     *
+     */
+    @PostMapping("balanceApp")
+    public void   balanceApp(DAppointment dAppointment) {
+    	String theStatus="结算成功";
+    	dAppointment.setDid(GetCurUser().getId());
+    	dAppointment.setGettime(DateUtils.getNowTime());
+        dAppointment.setUpstatus(2);
+        dAppointment.setBacktype(0);
+    	
+    	Integer integer = dAppointmentService.addAppointment(dAppointment);
+    	if (integer==-1){
+    		theStatus="结算失败";
+    	}
+    	sendOutPrint("code",theStatus);
+    }
 //============================!
 
 
