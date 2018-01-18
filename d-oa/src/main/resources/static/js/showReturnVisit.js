@@ -142,6 +142,206 @@ function tableonthis(table){
 		  });
 		});
 }
+function getApp(id,name){
+	layer.open({
+		type: 1
+		,title: false //不显示标题栏
+		,closeBtn: false
+		,area: ['490px', '400px']
+		,shade: 0.8
+		,id: 'LAY_layudfdfipro' //设定一个id，防止重复弹出
+		,btn: ['完成回访', '取消回访']
+		,btnAlign: 'c'
+		,moveType: 1 //拖拽模式，0或者1
+		,content: '<div class="layui-form"   ><div class="layui-layer-title" style="cursor: move;">回访患者姓名:【'+name+'】</div><div class="layui-form-item layui-form-text" style="margin-top: 10px;"><label class="layui-form-label">回访内容</label><div class="layui-input-block"><textarea  placeholder="请输入内容" style="width:80%;" class="layui-textarea backcomment"></textarea></div></div><div class="layui-form-item layui-form-text"><label class="layui-form-label">回访结果</label><div class="layui-input-block"><textarea placeholder="请输入内容"  style="width:80%;" class="layui-textarea backresult"></textarea></div></div>	            	   </div>',
+		yes: function(index, layero){
+			var backcomment=$(".backcomment").val();
+			var backresult=$(".backresult").val();
+
+			$.post("/dappointmentController/addbackComment","id="+id+"&backcomment="+backcomment+"&backresult="+backresult,function(data){
+				layer.open({
+					id: 'layerDemod'+data.code //防止重复弹出
+					,content: '<div style="padding: 20px 100px;">'+ data.code +'</div>'
+					,btn: '关闭'
+						,btnAlign: 'c' //按钮居中
+							,shade: 0 //不显示遮罩
+							,yes: function(){
+								layer.closeAll();
+							}
+				});
+				var table = layui.table;
+				tableReload(table);
+
+
+			},"JSON")
+			layer.close(index); 
+		}
+	});
+}
+
+function updateApp(id,name){
+	$.ajaxSetup({
+		async:false
+	})
+	findApp(id);
+	layer.open({
+		id: 'layerDemo44',
+		title:'修改预约：【'+name+"】"
+		,type: 1, 
+		shadeClose:true,
+		closeBtn: false
+		,area: ['600px', '630px']
+	,shade: 0.8
+	,id: 'LAY_la2345435' //设定一个id，防止重复弹出
+		,btn: ['确定修改', '取消']
+	,btnAlign: 'c'
+		,moveType: 1 //拖拽模式，0或者1
+		,content:$(".balances")
+		
+		,yes: function(index, layero){
+			
+			
+			var type=$(".layui-form-radioed div").html();
+			var apptime=$("#endTime").val();
+			var comment=$("#thecomments").val();
+			var backtime=$("#date21").val();
+			var getmoney=$("#getmoney").val();
+			var putmoney=$("#putmoney").val();
+			var backcomment=$("#backcomment").val();
+			$.post("/dappointmentController/updateApp","id="+id+"&name="+name+"" +
+					"&type="+type+"&apptime="+apptime+"" +
+							"&comment="+comment+"&backtime="+backtime+"&getmoney="+getmoney+"&putmoney" +
+									"="+putmoney+"&backcomment="+backcomment,function(data){
+				
+				layer.open({
+					id: 'layerDdfemo'+data.code //防止重复弹出
+					,content: '<div style="padding: 20px 100px;">'+ data.code +'</div>'
+					,btn: '关闭'
+						,btnAlign: 'c' //按钮居中
+							,shade: 0 //不显示遮罩
+							,yes: function(){
+								layer.closeAll();
+							}
+				});
+				
+			},"JSON")
+			
+			layer.close(index);
+			
+		}
+	});
+	
+}		
+
+function addtime(){
+	$("#addtime").click(function () {
+
+		var starttime=$(".startTime").val();
+		var getmin=$(".addme").val();
+		if (starttime!=""&&getmin!=""){
+
+			var endtime=judgFailTime(starttime,Number(getmin)).split(" ")[1];
+			$("#endTime").val(starttime.split(" ")[0]+" 【"+starttime.split(" ")[1].substring(0,5)+"-"+endtime.substring(0,5)+"】");
+
+
+		}
+
+	});
+	
+}
+
+
+/**
+ * 日期加分钟
+ */
+function judgFailTime(data,minute) {
+	var time = new Date(data.replace("-","/"));
+	var b = minute; //分钟数
+	time.setMinutes(time.getMinutes() + b, time.getSeconds(), 0);
+	return dateToString(time)
+	//如何将b的分钟数加到上面的时间上？？？？？
+}
+
+/**
+ * 日期格式转字符串
+ * @param now
+ * @returns {string}
+ */
+function dateToString(now){
+	var year = now.getFullYear();
+	var month =(now.getMonth() + 1).toString();
+	var day = (now.getDate()).toString();
+	var hour = (now.getHours()).toString();
+	var minute = (now.getMinutes()).toString();
+	var second = (now.getSeconds()).toString();
+	if (month.length == 1) {
+		month = "0" + month;
+	}
+	if (day.length == 1) {
+		day = "0" + day;
+	}
+	if (hour.length == 1) {
+		hour = "0" + hour;
+	}
+	if (minute.length == 1) {
+		minute = "0" + minute;
+	}
+	if (second.length == 1) {
+		second = "0" + second;
+	}
+	var dateTime = year + "-" + month + "-" + day +" "+ hour +":"+minute+":"+second;
+	return dateTime;
+}
+function findApp(id){
+	
+	$.post("/dappointmentController/findApp","id="+id,function(data){
+		
+		 var data={
+				 data:data.data
+		 };
+		 
+		ShowDataLoad(data,".balances","balances");
+		
+		updateFrom();
+		addtime();
+		$("#backcomment").val(data.data.backcomment);
+		
+	},"JSON")
+	
+	
+}
+
+function updateFrom(){
+	var form = layui.form;
+	var laydate = layui.laydate;
+	form.render();
+	   
+  laydate.render({
+	  elem: '#date11'
+  });
+  laydate.render({
+		elem: '#date21', //需显示日期的元素选择器
+		event: 'click', //触发事件
+		format: 'yyyy-MM-dd', //日期格式
+		istime: false, //是否开启时间选择
+		isclear: true, //是否显示清空
+		istoday: true, //是否显示今天
+		issure: true, //是否显示确认
+		festival: true ,//是否显示节日
+		fixed: false, //是否固定在可视区域
+	});
+  laydate.render({
+	  elem: '#date31' //需显示日期的元素选择器
+	  ,format: 'yyyy-MM-dd HH:mm'//日期格式
+		    ,type: 'datetime'
+	  
+  });
+	
+}
+function ShowDataLoad(data, name, temp) {
+	var html = template(temp, data);
+	$(name).html(html);
+}
 
 
 

@@ -49,5 +49,11 @@ public   interface DAppointmentService {
     public List<DAppointment> queryAlldBackAppointment(int pageNum, int pageSize, String order,int did);
     
     public List<DAppointment> queryAlldBackAppointmenttest(LaytableDate date,int did);
+    /**
+     * 根据Id和医生Did查询预约
+     * @param dPatient
+     * @return
+     */
+    public DAppointment  findApp(DAppointment dPatient);
      
 }

@@ -85,71 +85,12 @@
 	</div>
 
 
-<script type="text/html" id="jiesuan">
 
-
-<div class="layui-form " style="margin-top: 21px;">
-				<div class="layui-form-item">
-					<label class="layui-form-label">总额：</label>
-					<div class="layui-input-inline">
-						<input type="text"  id="allmoney" lay-verify="required"
-							placeholder="请输入金额"  autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">扣除：</label>
-					<div class="layui-input-inline">
-						<input type="text"  id="subtractmoney" lay-verify="required"
-							placeholder="请输入金额"  autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				
-				<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label">回访日期：</label>
-				<div class="layui-input-block">
-					<input type="text" name="backtime" id="date11" autocomplete="off"
-						class="layui-input">
-				</div>
-			</div>
-			<div class="layui-form-item">
-					<label class="layui-form-label">回访内容：</label>
-					<div class="layui-input-block">
-						<textarea type="text" name="title" id="backcomment" style="width: 293px;height: 86px;"  
-							 lay-verify="title"
-							autocomplete="off" class="layui-input"></textarea>
-					</div>
-				</div>
-			 
-		</div>
-			</div>
-  
-</script>
-
-
-
-	<script type="text/html" id="usernameTpl">
-  <a class="layui-table-link" target="_blank">{{ d.name }}</a>
-</script>
-	<script type="text/html" id="backtype">
-  {{#  if(d.upstatus ===2){ }}
-   <div style="background-color: #C9C9C9;">已结算</div>
-  {{#  } else { }}
- 	 <a class="layui-btn layui-btn-sm" onclick="balances({{d.id}},'{{d.name}}')" lay-event="edit">结算</a>
- 	 <a class="layui-btn layui-btn-danger layui-btn-sm" onclick="delappointemt({{d.id}},'{{d.name}}')" lay-event="del">取消预约</a>
-   	
-  {{#  } }}
-</script>
-
-	<script type="text/html" id="barDemo1">
-  <a class="layui-btn layui-btn-xs" lay-event="edit">工具性按钮</a>
-</script>
 
 
 	<script src="${base}/static/layui/dist/layui.js" charset="utf-8"></script>
 	<script src="${base}/static/js/showDAppointment.js"></script>
+	<#include "${base}/artTemplet/showDAppointmentDate.ftl">
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
 

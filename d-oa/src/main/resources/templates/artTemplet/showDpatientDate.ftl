@@ -725,4 +725,3 @@
 					</div>
 				</div>
 			</div>
-</script>

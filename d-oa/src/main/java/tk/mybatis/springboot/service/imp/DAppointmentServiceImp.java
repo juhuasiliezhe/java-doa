@@ -125,8 +125,20 @@ public class DAppointmentServiceImp implements DAppointmentService {
         DAppointmentExample example =new DAppointmentExample();
         DAppointmentExample.Criteria criteria = example.createCriteria();
         criteria.andIdEqualTo(dPatient.getId());
+        criteria.andDidEqualTo(dPatient.getDid());
         int i = dAppointmentMapper.updateByExampleSelective(dPatient,example);
         return  i;
+    }
+    public DAppointment  findApp(DAppointment dPatient){
+    	DAppointmentExample example =new DAppointmentExample();
+    	DAppointmentExample.Criteria criteria = example.createCriteria();
+    	criteria.andIdEqualTo(dPatient.getId());
+    	criteria.andDidEqualTo(dPatient.getDid());
+    	List<DAppointment> selectByExample = dAppointmentMapper.selectByExample(example);
+    	if (selectByExample.size()>0) {
+    		return  selectByExample.get(0);
+		}
+    	return  null;
     }
      
 

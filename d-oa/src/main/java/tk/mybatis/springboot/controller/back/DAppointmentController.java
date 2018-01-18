@@ -104,6 +104,33 @@ public class DAppointmentController extends BaseController {
     	}
     	sendOutPrint("code",theStatus);
     }
+    /**
+     * 修改预约
+     * @param dAppointment
+     */
+    @PostMapping("updateApp")
+    public void   updateApp(DAppointment dAppointment) {
+    	String theStatus="修改成功";
+    	dAppointment.setDid(GetCurUser().getId());
+    	Integer integer = dAppointmentService.addMoneyAppointment(dAppointment);
+    	if (integer==-1){
+    		theStatus="修改失败";
+    	}
+    	sendOutPrint("code",theStatus);
+    }
+    @PostMapping("findApp")
+    public void   findApp(DAppointment dAppointment) {
+    	String theStatus="修改成功";
+    	dAppointment.setDid(GetCurUser().getId());
+    	DAppointment findApp = dAppointmentService.findApp(dAppointment);
+    	if (findApp==null){
+    		theStatus="修改失败";
+    		sendOutPrint("data",theStatus);
+    	}else {
+    		sendOutPrint("data",findApp);
+		}
+    	
+    }
 //============================!
 
 
@@ -156,10 +183,11 @@ public class DAppointmentController extends BaseController {
     @PostMapping("/downMoneyAppointment")
     public void   downMoneyAppointment(DAppointment dAppointment) {
     	dAppointment.setStatus(0);
-    	String theStatus="取消成功";
+    	dAppointment.setDid(GetCurUser().getId());
+    	String theStatus="删除成功";
     	Integer integer = dAppointmentService.addMoneyAppointment(dAppointment);
     	if (integer==-1){
-    		theStatus="取消失败";
+    		theStatus="删除失败";
     	}
     	sendOutPrint("code",theStatus);
     }
