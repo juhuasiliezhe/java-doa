@@ -50,7 +50,7 @@
   {{#  if(d.upstatus ===2){ }}
 <a class="layui-btn layui-btn-sm" style="background:#C9C9C9;" disabled="disabled" lay-event="del">结算</a>
 <a class="layui-btn layui-btn-sm" onclick="updateApp({{d.id}},'{{d.name}}')" lay-event="del">修改</a>
-<a class="layui-btn layui-btn-danger layui-btn-sm" onclick="delappointemt({{d.id}},'{{d.name}}')" lay-event="del">删除</a>
+<a class="layui-btn layui-btn-danger layui-btn-sm" style="background:#C9C9C9;" disabled="disabled"  lay-event="del">删除</a>
   {{#  } else { }}
  	 <a class="layui-btn layui-btn-sm" onclick="balances({{d.id}},'{{d.name}}')" lay-event="edit">结算</a>
  	 <a class="layui-btn layui-btn-sm" onclick="updateApp({{d.id}},'{{d.name}}')" lay-event="del">修改</a>

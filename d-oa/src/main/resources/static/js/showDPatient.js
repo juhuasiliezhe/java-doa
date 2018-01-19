@@ -137,6 +137,7 @@ function delApp(id,name){
 		,content:'<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">确定删除患者【'+name+'】信息吗？</div>'
 
 		,yes: function(index, layero){
+			layer.close(index);
 			$.post("/back/downpatient","id="+id,function(data){
 				layer.open({
 					id: 'layerDemo1'+data.code //防止重复弹出
@@ -151,7 +152,7 @@ function delApp(id,name){
 				var table = layui.table;
 				tableReload(table);
 			},"JSON")
-			layer.close(index);
+			
 
 		}
 	});
@@ -178,7 +179,7 @@ function showApp(id,name){
 		,moveType: 1 //拖拽模式，0或者1
 		,content:$(".showAll")
 		,yes: function(index, layero){
-
+			layer.close(index);
 			layer.open({
 				type: 1
 				,title: '确定修改信息吗？' //不显示标题栏
@@ -197,7 +198,7 @@ function showApp(id,name){
 
 
 
-			layer.close(index);
+			
 
 		}
 	});
@@ -230,6 +231,7 @@ function addApp(){
 		,moveType: 1 //拖拽模式，0或者1
 		,content:$(".showAll")
 		,yes: function(index, layero){
+			layer.close(index);
 			
 			layer.open({
 				type: 1
@@ -249,7 +251,7 @@ function addApp(){
 			
 			
 			
-			layer.close(index);
+			
 			
 		}
 	});

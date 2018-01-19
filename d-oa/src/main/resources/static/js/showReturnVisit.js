@@ -199,7 +199,7 @@ function updateApp(id,name){
 		,content:$(".balances")
 		
 		,yes: function(index, layero){
-			
+			layer.close(index);
 			
 			var type=$(".layui-form-radioed div").html();
 			var apptime=$("#endTime").val();
@@ -220,13 +220,16 @@ function updateApp(id,name){
 						,btnAlign: 'c' //按钮居中
 							,shade: 0 //不显示遮罩
 							,yes: function(){
+								var table = layui.table;
+								tableReload(table);
 								layer.closeAll();
+								
 							}
 				});
 				
 			},"JSON")
 			
-			layer.close(index);
+			
 			
 		}
 	});

@@ -353,6 +353,8 @@ function updateApp(id,name){
 						,btnAlign: 'c' //按钮居中
 							,shade: 0 //不显示遮罩
 							,yes: function(){
+								var table = layui.table;
+								tableReload(table)
 								layer.closeAll();
 							}
 				});
