@@ -26,9 +26,9 @@
 				<div class="layui-form-item">
 					<div class="layui-inline">
 
-						<label class="layui-form-label">预约日期</label>
+						<label class="layui-form-label">日期</label>
 						<div class="layui-input-block">
-							<input type="text" name="date" id="date1" autocomplete="off"
+							<input type="text" name="date" id="date1" style="width: 133%;" autocomplete="off"
 								class="layui-input">
 						</div>
 					</div>

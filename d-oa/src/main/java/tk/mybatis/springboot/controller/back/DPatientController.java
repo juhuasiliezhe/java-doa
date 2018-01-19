@@ -83,7 +83,7 @@ public class DPatientController extends BaseController {
     	dPatient.setKidney(setOff(dPatient.getKidney())); 
     	dPatient.setNephropathy(setOff(dPatient.getNephropathy()));
         dPatient.setDid(GetCurUser().getId());
-        dPatient.setUptime(DateUtils.getNowTime());
+        dPatient.setUptime(DateUtils.getNowDate());
         dPService.addPatient(dPatient);
         return   "back/showDPatient";
     }

@@ -1,12 +1,18 @@
 $(function () {
+	$.ajaxSetup({
+		async:false
+	})
 	
 	layui.use(['table', 'laydate'], function(){
 		var table = layui.table;
 		var laydate = layui.laydate;
-		 
+		 var datatime=GetDateStr(0)+" - "+GetDateStr(0);
 		  laydate.render({
 		    elem: '#date1'
-		    	,value:GetDateStr(0)
+		    	,value:datatime
+		    	,range: true
+		    	,value:datatime
+		    	,format: 'yyyy年MM月dd日'
 		  });
 		   
 
@@ -36,7 +42,7 @@ function GetDateStr(AddDayCount) {
 	if(d<10){
 		d="0"+d;
 	}
-	return y+"-"+m+"-"+d; 
+	return y+"年"+m+"月"+d+"日"; 
 } 
 
  
@@ -107,7 +113,7 @@ function balances(id,name){
 		,content:$(".balances")
 
 		,yes: function(index, layero){
-			var backtime=$("#date11").val();
+			var backtimes=$("#date11").val();
 			var getmoney=$("#allmoney").val();
 	        var putmoney=$("#subtractmoney").val();
 	        var backcomment=$("#backcomment").val();
@@ -126,7 +132,7 @@ function balances(id,name){
 				,moveType: 1 //拖拽模式，0或者1
 				,content:'<div style="padding: 20px 100px;">确定结算吗？</div>'
 				,yes: function(index){
-					 $.post("/dappointmentController/addMoneyAppointment","backcomment="+backcomment+"&id="+id+"&getmoney="+getmoney+"&putmoney="+putmoney+"&backtime="+backtime,function(data){
+					 $.post("/dappointmentController/addMoneyAppointment","backcomment="+backcomment+"&id="+id+"&getmoney="+getmoney+"&putmoney="+putmoney+"&backtimes="+backtimes,function(data){
 						 
 						 layer.open({
 								id: 'layerDemo1'+data.code //防止重复弹出
@@ -220,7 +226,7 @@ function tableonthis(table){
 					yes: function(index, layero){
 						var backcomment=$(".backcomment").val();
 						var backresult=$(".backresult").val();
-
+						
 						$.post("/dappointmentController/addbackComment","id="+data.id+"&backcomment="+backcomment+"&backresult="+backresult,function(data){
 							layer.open({
 								id: 'layerDemo'+data.code //防止重复弹出
@@ -337,13 +343,13 @@ function updateApp(id,name){
 			var type=$(".layui-form-radioed div").html();
 			var apptime=$("#endTime").val();
 			var comment=$("#thecomments").val();
-			var backtime=$("#date21").val();
+			var backtimes=$("#date21").val();
 			var getmoney=$("#getmoney").val();
 			var putmoney=$("#putmoney").val();
 			var backcomment=$("#backcomment").val();
 			$.post("/dappointmentController/updateApp","id="+id+"&name="+name+"" +
 					"&type="+type+"&apptime="+apptime+"" +
-							"&comment="+comment+"&backtime="+backtime+"&getmoney="+getmoney+"&putmoney" +
+							"&comment="+comment+"&backtimes="+backtimes+"&getmoney="+getmoney+"&putmoney" +
 									"="+putmoney+"&backcomment="+backcomment,function(data){
 				
 				layer.open({

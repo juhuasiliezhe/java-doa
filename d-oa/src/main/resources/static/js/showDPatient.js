@@ -348,11 +348,11 @@ function pushApp(id,name){
 
 		,yes: function(index, layero){
 			
-			
 			var type=$(".layui-form-radioed div").html();
 			var apptime=$("#endTime").val();
 			var comment=$("#thecomment").val();
-			$.post("/dappointmentController/addappointments","pid="+id+"&name="+name+"&type="+type+"&apptime="+apptime+"&comment="+comment,function(data){
+			var uptimes=$("#date1").val();
+			$.post("/dappointmentController/addappointments","uptimes="+uptimes+"&pid="+id+"&name="+name+"&type="+type+"&apptime="+apptime+"&comment="+comment,function(data){
 
 				layer.open({
 					id: 'layerDemo'+data.code //防止重复弹出
@@ -408,9 +408,10 @@ function balanceApp(id,name){
 			var getmoney=$("#getmoney").val();
 			var putmoney=$("#putmoney").val();
 			var backcomment=$("#backcomment").val();
-			$.post("/dappointmentController/balanceApp","pid="+id+"&name="+name+"" +
+			var uptime=$("#date1").val();
+			$.post("/dappointmentController/balanceApp","uptimes="+uptime+"&pid="+id+"&name="+name+"" +
 					"&type="+type+"&apptime="+apptime+"" +
-							"&comment="+comment+"&backtime="+backtime+"&getmoney="+getmoney+"&putmoney" +
+							"&comment="+comment+"&backtimes="+backtime+"&getmoney="+getmoney+"&putmoney" +
 									"="+putmoney+"&backcomment="+backcomment,function(data){
 				
 				layer.open({

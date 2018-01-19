@@ -587,6 +587,7 @@
 <script type="text/html" id="barDemo1">
   <a class="layui-btn layui-btn-xs" lay-event="edit">工具性按钮</a>
 </script>
+
 <script type="text/html" id="balances">
   <div class="layui-form ">
 				<div class="layui-form-item" lay-filter="test2">
@@ -602,7 +603,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">就诊日期：</label>
 						<div class="layui-input-block">
-							<input type="text" name="date" placeholder="" id="date1"
+							<input type="text" name="uptime" placeholder=""  id="date1"
 								style="width: 190px;" autocomplete="off"
 								class="layui-input startTime">
 						</div>

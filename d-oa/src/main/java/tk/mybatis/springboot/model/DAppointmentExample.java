@@ -2,6 +2,7 @@ package tk.mybatis.springboot.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DAppointmentExample {
@@ -435,52 +436,62 @@ public class DAppointmentExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(Integer value) {
+        public Criteria andTypeEqualTo(String value) {
             addCriterion("type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(Integer value) {
+        public Criteria andTypeNotEqualTo(String value) {
             addCriterion("type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(Integer value) {
+        public Criteria andTypeGreaterThan(String value) {
             addCriterion("type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTypeGreaterThanOrEqualTo(String value) {
             addCriterion("type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(Integer value) {
+        public Criteria andTypeLessThan(String value) {
             addCriterion("type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(Integer value) {
+        public Criteria andTypeLessThanOrEqualTo(String value) {
             addCriterion("type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIn(List<Integer> values) {
+        public Criteria andTypeLike(String value) {
+            addCriterion("type like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotLike(String value) {
+            addCriterion("type not like", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIn(List<String> values) {
             addCriterion("type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<Integer> values) {
+        public Criteria andTypeNotIn(List<String> values) {
             addCriterion("type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(Integer value1, Integer value2) {
+        public Criteria andTypeBetween(String value1, String value2) {
             addCriterion("type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
+        public Criteria andTypeNotBetween(String value1, String value2) {
             addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
@@ -765,62 +776,52 @@ public class DAppointmentExample {
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeEqualTo(String value) {
+        public Criteria andBacktimeEqualTo(Date value) {
             addCriterion("backtime =", value, "backtime");
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeNotEqualTo(String value) {
+        public Criteria andBacktimeNotEqualTo(Date value) {
             addCriterion("backtime <>", value, "backtime");
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeGreaterThan(String value) {
+        public Criteria andBacktimeGreaterThan(Date value) {
             addCriterion("backtime >", value, "backtime");
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeGreaterThanOrEqualTo(String value) {
+        public Criteria andBacktimeGreaterThanOrEqualTo(Date value) {
             addCriterion("backtime >=", value, "backtime");
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeLessThan(String value) {
+        public Criteria andBacktimeLessThan(Date value) {
             addCriterion("backtime <", value, "backtime");
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeLessThanOrEqualTo(String value) {
+        public Criteria andBacktimeLessThanOrEqualTo(Date value) {
             addCriterion("backtime <=", value, "backtime");
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeLike(String value) {
-            addCriterion("backtime like", value, "backtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andBacktimeNotLike(String value) {
-            addCriterion("backtime not like", value, "backtime");
-            return (Criteria) this;
-        }
-
-        public Criteria andBacktimeIn(List<String> values) {
+        public Criteria andBacktimeIn(List<Date> values) {
             addCriterion("backtime in", values, "backtime");
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeNotIn(List<String> values) {
+        public Criteria andBacktimeNotIn(List<Date> values) {
             addCriterion("backtime not in", values, "backtime");
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeBetween(String value1, String value2) {
+        public Criteria andBacktimeBetween(Date value1, Date value2) {
             addCriterion("backtime between", value1, value2, "backtime");
             return (Criteria) this;
         }
 
-        public Criteria andBacktimeNotBetween(String value1, String value2) {
+        public Criteria andBacktimeNotBetween(Date value1, Date value2) {
             addCriterion("backtime not between", value1, value2, "backtime");
             return (Criteria) this;
         }
@@ -1145,62 +1146,52 @@ public class DAppointmentExample {
             return (Criteria) this;
         }
 
-        public Criteria andUptimeEqualTo(String value) {
+        public Criteria andUptimeEqualTo(Date value) {
             addCriterion("uptime =", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeNotEqualTo(String value) {
+        public Criteria andUptimeNotEqualTo(Date value) {
             addCriterion("uptime <>", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeGreaterThan(String value) {
+        public Criteria andUptimeGreaterThan(Date value) {
             addCriterion("uptime >", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeGreaterThanOrEqualTo(String value) {
+        public Criteria andUptimeGreaterThanOrEqualTo(Date value) {
             addCriterion("uptime >=", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeLessThan(String value) {
+        public Criteria andUptimeLessThan(Date value) {
             addCriterion("uptime <", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeLessThanOrEqualTo(String value) {
+        public Criteria andUptimeLessThanOrEqualTo(Date value) {
             addCriterion("uptime <=", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeLike(String value) {
-            addCriterion("uptime like", value, "uptime");
-            return (Criteria) this;
-        }
-
-        public Criteria andUptimeNotLike(String value) {
-            addCriterion("uptime not like", value, "uptime");
-            return (Criteria) this;
-        }
-
-        public Criteria andUptimeIn(List<String> values) {
+        public Criteria andUptimeIn(List<Date> values) {
             addCriterion("uptime in", values, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeNotIn(List<String> values) {
+        public Criteria andUptimeNotIn(List<Date> values) {
             addCriterion("uptime not in", values, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeBetween(String value1, String value2) {
+        public Criteria andUptimeBetween(Date value1, Date value2) {
             addCriterion("uptime between", value1, value2, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeNotBetween(String value1, String value2) {
+        public Criteria andUptimeNotBetween(Date value1, Date value2) {
             addCriterion("uptime not between", value1, value2, "uptime");
             return (Criteria) this;
         }

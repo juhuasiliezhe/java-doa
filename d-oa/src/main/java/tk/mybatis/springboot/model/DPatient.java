@@ -1,5 +1,8 @@
 package tk.mybatis.springboot.model;
 
+
+import java.util.Date;
+
 public class DPatient {
     private Integer id;
 
@@ -65,7 +68,7 @@ public class DPatient {
 
     private String work;
 
-    private String uptime;
+    private Date uptime;
 
     private Integer status;
 
@@ -325,12 +328,12 @@ public class DPatient {
         this.work = work == null ? null : work.trim();
     }
 
-    public String getUptime() {
+    public Date getUptime() {
         return uptime;
     }
 
-    public void setUptime(String uptime) {
-        this.uptime = uptime == null ? null : uptime.trim();
+    public void setUptime(Date uptime) {
+        this.uptime = uptime;
     }
 
     public Integer getStatus() {

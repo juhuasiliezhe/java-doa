@@ -70,7 +70,7 @@
 					<th lay-data="{field:'backresult',width:'15%'}">回访结果</th>
 					<th lay-data="{field:'apptime', width:'15%', sort: true}">预约时间</th>
 					<th lay-data="{field:'gettime', width:'10%', sort: true}">结算时间</th>
-					<th lay-data="{field:'backtime', width:'8%', sort: true}">回访时间</th>
+					<th lay-data="{field:'backtime', width:'8%', sort: true,  templet:'#backtime'    }">回访时间</th>
 					<th style="text-align: center;"lay-data="{field:'', templet: '#backtype',style:'text-align: center; '}"></th>
 				</tr>
 			</thead>
@@ -155,7 +155,7 @@
 			<div class="layui-form-item">
 					<label class="layui-form-label">回访时间：</label>
 					<div class="layui-input-block">
-						<input type="text" name="date"  value="<$=data.backtime$>" placeholder="" id="date21"
+						<input type="text" name="date"  value="<$=data.newbacktime$>" placeholder="" id="date21"
 								style="width: 190px;" autocomplete="off"
 								class="layui-input startTime">
 					</div>
@@ -175,7 +175,10 @@
 			</div>
 </script>
 
+	<script type="text/html" id="backtime">
 
+  
+</script>
 	<script type="text/html" id="usernameTpl">
   <a class="layui-table-link" target="_blank">{{ d.name }}</a>
 </script>

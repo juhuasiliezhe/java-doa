@@ -52,7 +52,10 @@ public class DAppointmentServiceImp implements DAppointmentService {
             criteria.andNameLike("%"+date.getName()+"%");
         }
         if (date.getTimes().length()>0){
-            criteria.andApptimeLike("%"+date.getTimes()+"%");
+        	
+        	String[] newTime=date.getTimes().split("-");
+            criteria.andApptimeBetween("%"+newTime[0].replaceAll("[年|月]","-").replace("日","")+"%", "%"+newTime[1].replaceAll("[年|月]","-").replace("日","")+"%");
+            
         }else{
             criteria.andApptimeLike("%"+ DateUtils.getNowTime2()+"%");
         }
@@ -93,7 +96,7 @@ public class DAppointmentServiceImp implements DAppointmentService {
     		woIntegers.add(Integer.parseInt(string));
 		}
     	if (date.getTimes().length()>0) {
-    		criteria.andBacktimeLike("%"+date.getTimes()+"%");
+//    		criteria.andBacktimeLike("%"+date.getTimes()+"%");
 		}
     	if (date.getName().length()>0) {
     		criteria.andNameLike("%"+date.getName()+"%");

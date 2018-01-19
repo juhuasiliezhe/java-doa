@@ -1,6 +1,7 @@
 package tk.mybatis.springboot.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class DAppointment {
     private Integer id;
@@ -23,7 +24,7 @@ public class DAppointment {
 
     private String backresult;
 
-    private String backtime;
+    private Date backtime;
 
     private Integer upstatus;
 
@@ -35,7 +36,7 @@ public class DAppointment {
 
     private String gettime;
 
-    private String uptime;
+    private Date uptime;
 
     public Integer getId() {
         return id;
@@ -82,7 +83,7 @@ public class DAppointment {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type == null ? null : type.trim();
     }
 
     public String getComment() {
@@ -117,12 +118,12 @@ public class DAppointment {
         this.backresult = backresult == null ? null : backresult.trim();
     }
 
-    public String getBacktime() {
+    public Date getBacktime() {
         return backtime;
     }
 
-    public void setBacktime(String backtime) {
-        this.backtime = backtime == null ? null : backtime.trim();
+    public void setBacktime(Date backtime) {
+        this.backtime = backtime;
     }
 
     public Integer getUpstatus() {
@@ -165,11 +166,13 @@ public class DAppointment {
         this.gettime = gettime == null ? null : gettime.trim();
     }
 
-    public String getUptime() {
+    public Date getUptime() {
         return uptime;
     }
 
-    public void setUptime(String uptime) {
-        this.uptime = uptime == null ? null : uptime.trim();
+    public void setUptime(Date uptime) {
+        this.uptime = uptime;
     }
+    
+     
 }

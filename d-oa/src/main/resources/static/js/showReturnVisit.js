@@ -1,6 +1,6 @@
 $(function () {
 	 
-	
+
 	layui.use(['table', 'laydate'], function(){
 		var table = layui.table;
 		var laydate = layui.laydate;
@@ -302,6 +302,9 @@ function findApp(id){
 		 var data={
 				 data:data.data
 		 };
+		 /*alert(timeUtils(data.data.backtime))*/
+		 var timeutil7=data.data.backtime;
+		 
 		 
 		ShowDataLoad(data,".balances","balances");
 		
@@ -310,9 +313,46 @@ function findApp(id){
 		$("#backcomment").val(data.data.backcomment);
 		
 	},"JSON")
-	
-	
 }
+function timeFormat(nS) {     
+	  return new Date(parseInt(("/Date("+nS+")/").substr(6, 13))).toLocaleDateString();     
+	};
+
+ function timeutil(date){
+	 
+	 
+	 var timestamp = Date.parse(date);
+	 alert(date)
+	 timestamp3 = timestamp / 1000;
+	 
+	 var newDate = new Date();
+	 newDate.setTime(timestamp3 * 1000);
+	  
+	  
+	 Date.prototype.format = function(format) {
+	     var date = {
+	        "M+": this.getMonth() + 1,
+	        "d+": this.getDate(),
+	        "h+": this.getHours(),
+	        "m+": this.getMinutes(),
+	        "s+": this.getSeconds(),
+	        "q+": Math.floor((this.getMonth() + 3) / 3),
+	        "S+": this.getMilliseconds()
+	     };
+	     if (/(y+)/i.test(format)) {
+	        format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+	     }
+	     for (var k in date) {
+	        if (new RegExp("(" + k + ")").test(format)) {
+	            format = format.replace(RegExp.$1, RegExp.$1.length == 1
+	               ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+	        }
+	     }
+	     return format;
+	 }
+	 console.log(newDate.format('yyyy-MM-dd h:m:s'));
+ }
+
 
 function updateFrom(){
 	var form = layui.form;

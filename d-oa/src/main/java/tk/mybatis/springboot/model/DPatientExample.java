@@ -1,6 +1,7 @@
 package tk.mybatis.springboot.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DPatientExample {
@@ -2334,62 +2335,52 @@ public class DPatientExample {
             return (Criteria) this;
         }
 
-        public Criteria andUptimeEqualTo(String value) {
+        public Criteria andUptimeEqualTo(Date value) {
             addCriterion("uptime =", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeNotEqualTo(String value) {
+        public Criteria andUptimeNotEqualTo(Date value) {
             addCriterion("uptime <>", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeGreaterThan(String value) {
+        public Criteria andUptimeGreaterThan(Date value) {
             addCriterion("uptime >", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeGreaterThanOrEqualTo(String value) {
+        public Criteria andUptimeGreaterThanOrEqualTo(Date value) {
             addCriterion("uptime >=", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeLessThan(String value) {
+        public Criteria andUptimeLessThan(Date value) {
             addCriterion("uptime <", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeLessThanOrEqualTo(String value) {
+        public Criteria andUptimeLessThanOrEqualTo(Date value) {
             addCriterion("uptime <=", value, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeLike(String value) {
-            addCriterion("uptime like", value, "uptime");
-            return (Criteria) this;
-        }
-
-        public Criteria andUptimeNotLike(String value) {
-            addCriterion("uptime not like", value, "uptime");
-            return (Criteria) this;
-        }
-
-        public Criteria andUptimeIn(List<String> values) {
+        public Criteria andUptimeIn(List<Date> values) {
             addCriterion("uptime in", values, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeNotIn(List<String> values) {
+        public Criteria andUptimeNotIn(List<Date> values) {
             addCriterion("uptime not in", values, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeBetween(String value1, String value2) {
+        public Criteria andUptimeBetween(Date value1, Date value2) {
             addCriterion("uptime between", value1, value2, "uptime");
             return (Criteria) this;
         }
 
-        public Criteria andUptimeNotBetween(String value1, String value2) {
+        public Criteria andUptimeNotBetween(Date value1, Date value2) {
             addCriterion("uptime not between", value1, value2, "uptime");
             return (Criteria) this;
         }

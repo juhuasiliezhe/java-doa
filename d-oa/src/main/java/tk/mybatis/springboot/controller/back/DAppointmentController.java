@@ -73,10 +73,11 @@ public class DAppointmentController extends BaseController {
      * @param dAppointment
      */
     @PostMapping("addappointments")
-    public void   addappointment(DAppointment dAppointment) {
+    public void   addappointment(DAppointment dAppointment,String uptimes) {
         String theStatus="预约成功";
         dAppointment.setDid(GetCurUser().getId());
         dAppointment.setUpstatus(1);
+        dAppointment.setUptime(DateUtils.parselong(uptimes+":00"));
         Integer integer = dAppointmentService.addAppointment(dAppointment);
         if (integer==-1){
             theStatus="预约失败";
@@ -91,12 +92,14 @@ public class DAppointmentController extends BaseController {
      *
      */
     @PostMapping("balanceApp")
-    public void   balanceApp(DAppointment dAppointment) {
+    public void   balanceApp(DAppointment dAppointment,String uptimes,String backtimes) {
     	String theStatus="结算成功";
     	dAppointment.setDid(GetCurUser().getId());
     	dAppointment.setGettime(DateUtils.getNowTime());
         dAppointment.setUpstatus(2);
         dAppointment.setBacktype(0);
+        dAppointment.setUptime(DateUtils.parselong(uptimes+":00"));
+        dAppointment.setBacktime(DateUtils.parse(backtimes));
     	
     	Integer integer = dAppointmentService.addAppointment(dAppointment);
     	if (integer==-1){
@@ -109,9 +112,10 @@ public class DAppointmentController extends BaseController {
      * @param dAppointment
      */
     @PostMapping("updateApp")
-    public void   updateApp(DAppointment dAppointment) {
+    public void   updateApp(DAppointment dAppointment,String backtimes) {
     	String theStatus="修改成功";
     	dAppointment.setDid(GetCurUser().getId());
+    	dAppointment.setBacktime(DateUtils.parse(backtimes));
     	Integer integer = dAppointmentService.addMoneyAppointment(dAppointment);
     	if (integer==-1){
     		theStatus="修改失败";
@@ -164,11 +168,12 @@ public class DAppointmentController extends BaseController {
      * @param dAppointment
      */
     @PostMapping("/addMoneyAppointment")
-    public void   addMoneyAppointment(DAppointment dAppointment) {
+    public void   addMoneyAppointment(DAppointment dAppointment,String backtimes) {
         dAppointment.setGettime(DateUtils.getNowTime());
         dAppointment.setUpstatus(2);
         dAppointment.setBacktype(0);
         dAppointment.setDid(GetCurUser().getId());
+        dAppointment.setBacktime(DateUtils.parse(backtimes));
         String theStatus="结算成功";
         Integer integer = dAppointmentService.addMoneyAppointment(dAppointment);
         if (integer==-1){
@@ -193,7 +198,7 @@ public class DAppointmentController extends BaseController {
     }
     @PostMapping("/addbackComment")
     public void   addbackComment(DAppointment dAppointment) {
-        dAppointment.setBacktime(DateUtils.getNowTime());
+        dAppointment.setBacktime(dAppointment.getBacktime());
         dAppointment.setBacktype(2);
         dAppointment.setDid(GetCurUser().getId());
         String theStatus="回访成功";
