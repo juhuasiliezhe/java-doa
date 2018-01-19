@@ -72,7 +72,7 @@ h1,legend {
 						<th lay-data="{field:'fromwhere',width:'8%'}">患者来源</th>
 						<th lay-data="{field:'cometime',width:'8%'}">就诊日期</th>
 						<th lay-data="{field:'phone', width:'8%', sort: true}">手机号码</th>
-						<th lay-data="{field:'uptime', width:'10%', sort: true}">添加时间</th>
+						<th lay-data="{field:'uptime', width:'10%', sort: true,templet: '#uptime'}">添加时间</th>
 						<th lay-data="{field:'tip', width:'15%', sort: true}">处置项目</th>
 						<th lay-data="{field:'telephone', width:'15%', sort: true}">患者类型</th>
 						<th style="text-align: center;"
@@ -93,6 +93,12 @@ h1,legend {
 
 	</div>
 	
+<script type="text/html" id="uptime">
+	{{#  if(d.uptime!=null){ }}
+	 {{#  return timeUtils(d.uptime.time)}}
+  {{#  }  }}
+</script>
+	
 
 
 
@@ -102,6 +108,7 @@ h1,legend {
 
 
 	<script src="${base}/static/layui/dist/layui.js" charset="utf-8"></script>
+	<script src="${base}/static/js/common/common.js" charset="utf-8"></script>
 	<script src="${base}/static/js/showDPatient.js"></script>
 	<#include "${base}/artTemplet/showDpatientDate.ftl">
 	

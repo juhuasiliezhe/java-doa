@@ -66,11 +66,11 @@
 					<th lay-data="{field:'id', width:'4%', sort: true}">编号</th>
 					<th lay-data="{field:'name', width:'6%', templet: '#usernameTpl'}">姓名</th>
 					<th lay-data="{field:'comment', width:'8%'}">预约项目</th>
-					<th lay-data="{field:'backcomment',width:'20%'}">回访内容</th>
+					<th lay-data="{field:'backcomment',width:'15%'}">回访内容</th>
 					<th lay-data="{field:'backresult',width:'15%'}">回访结果</th>
-					<th lay-data="{field:'apptime', width:'15%', sort: true}">预约时间</th>
-					<th lay-data="{field:'gettime', width:'10%', sort: true}">结算时间</th>
-					<th lay-data="{field:'backtime', width:'8%', sort: true,  templet:'#backtime'    }">回访时间</th>
+					<th lay-data="{field:'apptime', width:'14%', sort: true}">预约时间</th>
+					<th lay-data="{field:'gettime', width:'11%', sort: true}">结算时间</th>
+					<th lay-data="{field:'backtime', width:'11%', sort: true,  templet:'#backtime'    }">回访时间</th>
 					<th style="text-align: center;"lay-data="{field:'', templet: '#backtype',style:'text-align: center; '}"></th>
 				</tr>
 			</thead>
@@ -78,7 +78,6 @@
 
 	</div>
 	</div>
-	
 	
 		<div class="balances"  style="display:none">
 			
@@ -177,7 +176,10 @@
 
 	<script type="text/html" id="backtime">
 
-  
+  {{#  if(d.backtime!=null){ }}
+	 {{#  return timeUtilsimple(d.backtime.time)}}
+  {{#  }  }}
+
 </script>
 	<script type="text/html" id="usernameTpl">
   <a class="layui-table-link" target="_blank">{{ d.name }}</a>
@@ -200,6 +202,7 @@
 
 
 	<script src="${base}/static/layui/dist/layui.js" charset="utf-8"></script>
+	<script src="${base}/static/js/common/common.js" charset="utf-8"></script>
 	<script src="${base}/static/js/showReturnVisit.js"></script>
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 	
