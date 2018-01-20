@@ -4,38 +4,23 @@ $(function () {
 	layui.use(['table', 'laydate'], function(){
 		var table = layui.table;
 		var laydate = layui.laydate;
-		laydate.render({
-		    elem:'#date1'
-		    ,value:GetDateStr(0)
+		
+		var datatime=GetDateStr(0)+" - "+GetDateStr(0);
+		  laydate.render({
+		    elem: '#date1'
+		    	,range: true
+		    	,value:datatime
+		    	,format: 'yyyy年MM月dd日'
 		  });
+		
+		
+		 
 		tableReload(table);
 		tableonthis(table);
 		statusGet();
 		
 	});
 });
-
-/**
- * 获取日期
- * @param AddDayCount
- * @returns {String}
- */
-function GetDateStr(AddDayCount) { 
-	var dd = new Date(); 
-	dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
-	var y = dd.getFullYear(); 
-	var m = dd.getMonth()+1;//获取当前月份的日期 
-	
-	
-	var d = dd.getDate(); 
-	if(m<10){
-		m="0"+m;
-	}
-	if(d<10){
-		d="0"+d;
-	}
-	return y+"-"+m+"-"+d; 
-} 
 
  
 function statusGet(){
@@ -308,9 +293,11 @@ function findApp(id){
 		 
 		ShowDataLoad(data,".balances","balances");
 		
+		
+		$("#backcomment").val(data.data.backcomment);
+		$("#date21").val(timeUtils(data.data.backtime.time));
 		updateFrom();
 		addtime();
-		$("#backcomment").val(data.data.backcomment);
 		
 	},"JSON")
 }

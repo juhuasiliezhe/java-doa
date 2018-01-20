@@ -19,6 +19,7 @@ import tk.mybatis.springboot.util.DateUtils;
 import javax.annotation.Resource;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,14 +52,13 @@ public class DAppointmentServiceImp implements DAppointmentService {
         if (date.getName().length()>0){
             criteria.andNameLike("%"+date.getName()+"%");
         }
+        Date[] parsewithDoa=null;
         if (date.getTimes().length()>0){
-        	
-        	String[] newTime=date.getTimes().split("-");
-            criteria.andApptimeBetween("%"+newTime[0].replaceAll("[年|月]","-").replace("日","")+"%", "%"+newTime[1].replaceAll("[年|月]","-").replace("日","")+"%");
-            
+        	 parsewithDoa = DateUtils.parsewithDoa(date.getTimes());
         }else{
-            criteria.andApptimeLike("%"+ DateUtils.getNowTime2()+"%");
+        	parsewithDoa = DateUtils.parsewithDoaToday();
         }
+        criteria.andUptimeBetween(parsewithDoa[0],parsewithDoa[1]);
         String[] erInteger=date.getStatus().split(",");
         List<Integer> woIntegers=new ArrayList<Integer>();
         
@@ -95,9 +95,18 @@ public class DAppointmentServiceImp implements DAppointmentService {
     	for (String string : erInteger) {
     		woIntegers.add(Integer.parseInt(string));
 		}
-    	if (date.getTimes().length()>0) {
-//    		criteria.andBacktimeLike("%"+date.getTimes()+"%");
-		}
+    	
+    	 Date[] parsewithDoa=null;
+         if (date.getTimes().length()>0){
+         	 parsewithDoa = DateUtils.parsewithDoa(date.getTimes());
+         }else{
+         	parsewithDoa = DateUtils.parsewithDoaToday();
+         }
+         criteria.andBacktimeBetween(parsewithDoa[0],parsewithDoa[1]);
+    	
+    	 
+    	
+    	
     	if (date.getName().length()>0) {
     		criteria.andNameLike("%"+date.getName()+"%");
 		}

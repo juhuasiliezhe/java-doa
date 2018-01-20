@@ -48,6 +48,8 @@ public class DateUtils {
 	 * 格式  yyyy年MM月dd日
 	 */
 	public static final String	DATE_Char_STR	= "yyyy年MM月dd日";
+	
+	public static final String	DATE_Char_Long	= "yyyy年MM月dd日 HH时mm分ss秒";
 
 	/**
 	 * 使用预设格式提取字符串日期 yyyy-MM-dd
@@ -68,6 +70,32 @@ public class DateUtils {
 	 */
 	public static Date parselong(String strDate) {
 		return parse(strDate, DATE_FULL_STR);
+	}
+	/**
+	 * 使用预设格式提取字符串日期 yyyy年MM月dd日
+	 * @param strDate
+	 * @return
+	 */
+	public static Date parseChar(String strDate) {
+		return parse(strDate, DATE_Char_STR);
+	}
+	
+	public static Date parseCharLong(String strDate) {
+		return parse(strDate, DATE_Char_Long);
+	}
+	public static Date[] parsewithDoa(String strDate) {
+//		2018年01月20日 - 2018年01月20日
+		strDate=strDate.replace(" ","");
+		String[] mydate=strDate.split("-");
+		 Date parse = parse(mydate[0]+" 00时00分00秒", DATE_Char_Long);
+		 Date parse1 = parse(mydate[1]+" 23时59分59秒", DATE_Char_Long);
+		 Date[] getdate={parse,parse1};
+		 return getdate;
+	}
+	public static Date[] parsewithDoaToday() {
+		Date[] parsewithDoa = parsewithDoa(getNowTimeCharLong()+"-"+getNowTimeCharLong());
+//		 
+		return parsewithDoa;
 	}
 
 	/**
@@ -162,6 +190,13 @@ public class DateUtils {
 	 */
 	public static String getNowTime() {
 		return getNowTime(DATE_FULL_STR);
+	}
+	/**
+	 * yyyy年MM月dd日	
+	 * @return
+	 */
+	public static String getNowTimeCharLong() {
+		return getNowTime(DATE_Char_STR);
 	}
 	/**
 	 * 获取系统当前时间  yyyy-MM-dd 
@@ -277,6 +312,7 @@ public class DateUtils {
 		SimpleDateFormat formatter = new SimpleDateFormat(DATE_FULL_STR);
 		return formatter.format(date);
 	}	
+	
 	/**
 	 * 日期转换为字符串  yyyy-MM-dd
 	 */
@@ -291,6 +327,15 @@ public class DateUtils {
 		SimpleDateFormat formatter = new SimpleDateFormat(DATE_Char_STR);
 		return formatter.format(date);
 	}
+	/**
+	 * 日期转换为字符串  yyyy年MM月dd日 HH时mm分ss秒
+	 * @param date
+	 * @return
+	 */
+	public static String DataToStringCharLong(Date date) {
+		SimpleDateFormat formatter = new SimpleDateFormat(DATE_Char_Long);
+		return formatter.format(date);
+	}	
 	
 	/**
 	 * 日期转换为字符串  HH:mm:ss

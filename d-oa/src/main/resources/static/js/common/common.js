@@ -13,7 +13,12 @@ function timeUtilsimple(value){
 	return dateFormat (value,"yyyy-MM-dd");
 }
 
-
+/**
+ * 日期转换
+ * @param value
+ * @param format
+ * @returns
+ */
 function  dateFormat (value,format) {
 	
 	var now=new Date(value);
@@ -38,3 +43,26 @@ function  dateFormat (value,format) {
     }
     return format;
 }
+
+/**
+ * 获取日期
+ * @param AddDayCount
+ * @returns {String}
+ */
+function GetDateStr(AddDayCount) { 
+	var dd = new Date(); 
+	dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+	var y = dd.getFullYear(); 
+	var m = dd.getMonth()+1;//获取当前月份的日期 
+	
+	
+	var d = dd.getDate(); 
+	if(m<10){
+		m="0"+m;
+	}
+	if(d<10){
+		d="0"+d;
+	}
+	return y+"年"+m+"月"+d+"日"; 
+} 
+

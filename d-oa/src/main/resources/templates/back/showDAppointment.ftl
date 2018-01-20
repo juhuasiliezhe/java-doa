@@ -26,7 +26,7 @@
 				<div class="layui-form-item">
 					<div class="layui-inline">
 
-						<label class="layui-form-label">日期</label>
+						<label class="layui-form-label">预约日期</label>
 						<div class="layui-input-block">
 							<input type="text" name="date" id="date1" style="width: 133%;" autocomplete="off"
 								class="layui-input">
@@ -89,6 +89,7 @@
 
 
 	<script src="${base}/static/layui/dist/layui.js" charset="utf-8"></script>
+	<script src="${base}/static/js/common/common.js" charset="utf-8"></script>
 	<script src="${base}/static/js/showDAppointment.js"></script>
 	<#include "${base}/artTemplet/showDAppointmentDate.ftl">
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->

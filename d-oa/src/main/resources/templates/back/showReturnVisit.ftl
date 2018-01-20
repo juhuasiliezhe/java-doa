@@ -32,7 +32,7 @@
 				
 					<label class="layui-form-label">回访日期</label>
 					<div class="layui-input-block">
-						<input type="text" name="date" id="date1" autocomplete="off"
+						<input type="text" name="date" style="width: 133%;" id="date1" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
@@ -154,7 +154,7 @@
 			<div class="layui-form-item">
 					<label class="layui-form-label">回访时间：</label>
 					<div class="layui-input-block">
-						<input type="text" name="date"  value="<$=data.newbacktime$>" placeholder="" id="date21"
+						<input type="text" name="date"  placeholder="" id="date21"
 								style="width: 190px;" autocomplete="off"
 								class="layui-input startTime">
 					</div>
