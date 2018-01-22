@@ -24,6 +24,8 @@
 
 package tk.mybatis.springboot.controller.back;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -31,8 +33,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
 import tk.mybatis.springboot.controller.BaseController;
+import tk.mybatis.springboot.model.DAppointment;
 import tk.mybatis.springboot.model.DUser;
+import tk.mybatis.springboot.model.LayDates;
+import tk.mybatis.springboot.model.LaytableDate;
+import tk.mybatis.springboot.model.countBytime;
+import tk.mybatis.springboot.service.DAppointmentService;
 import tk.mybatis.springboot.service.DUserService;
 
 /**
@@ -44,45 +54,40 @@ import tk.mybatis.springboot.service.DUserService;
 @RequestMapping("achievement")
 public class AchievementController extends BaseController {
     @Resource
-    private DUserService userService;
+    private DAppointmentService dAppointmentService;
      
-    @PostMapping("/uplogin")
-    public void   addPatient(DUser dUser) {
-
-        Integer uplogin=0;
-
-        Integer uplogin1 = userService.uplogin(dUser.getUsername());
-
-        if (uplogin1==1){
-            DUser uplogin2 = userService.uplogin(dUser);
-            if (uplogin2!=null) {
-            	uplogin = 1;
-            	session.setAttribute("user",uplogin2);
-			}else {
-				uplogin = 0;
-			}
-            
-            
-        }else{
-            uplogin=-1;
-        }
-
-        sendOutPrint("code",uplogin);
-
-    }
-
+     
     @GetMapping("/achievement.html")
     public String  achievement () {
+    	Integer[] dataByCount = dAppointmentService.getDataByCount(GetCurUser().getId());
+    	Integer[] dataByCount2 = dAppointmentService.getDataByCount2(GetCurUser().getId());
+    	request.setAttribute("appAllNum",dataByCount[0]);//今日预约数量
+    	request.setAttribute("appDoNum",dataByCount[1]);//今日预约完成结算
+    	request.setAttribute("backAllNum",dataByCount2[0]);//今日需回访
+    	request.setAttribute("backDoNum",dataByCount2[1]);//今日已回访
+    	
+    	
+    	
+    	
+    	
 
         return "back/achievement";
     }
-    @GetMapping("/loginout.html")
-    public String  loginout () {
-        session.setAttribute("user",null);
-
-        
-        return "redirect:login.html";
+    
+    
+    @PostMapping("/countData")
+    public void   countData(String time) {
+    	if (time.length()<=0) {
+    		time="2017年12月12日-2030年12月12日";
+		}
+    	
+    	countBytime countsAllApp = dAppointmentService.countsAllApp(time,GetCurUser().getId());
+    	
+    	sendOutPrint1(countsAllApp);
     }
+    
+     
+    
 
 
 

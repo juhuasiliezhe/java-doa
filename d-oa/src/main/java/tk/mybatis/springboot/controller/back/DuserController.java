@@ -111,7 +111,7 @@ public class DuserController extends BaseController {
     public String  loginout () {
         session.setAttribute("user",null);
 
-        return "";
+        return "redirect:login.html";
     }
     @GetMapping("/userdata.html")
     public String  userdata () {

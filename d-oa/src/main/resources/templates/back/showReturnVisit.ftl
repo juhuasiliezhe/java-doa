@@ -190,7 +190,7 @@
 <a class="layui-btn layui-btn-sm" onclick="updateApp({{d.id}},'{{d.name}}')" lay-event="del">修改</a>
 
   {{#  } else { }}
-<a class="layui-btn layui-btn-sm" onclick="getApp({{d.id}},'{{d.name}}')" style="background:#009688;color: #fff;">去回访</a>
+<a class="layui-btn layui-btn-sm" onclick="getApp({{d.id}},'{{d.name}}','{{d.backcomment}}')" style="background:#009688;color: #fff;">去回访</a>
 <a class="layui-btn layui-btn-sm" onclick="updateApp({{d.id}},'{{d.name}}')" lay-event="del">修改</a>
    	
   {{#  } }}
@@ -198,6 +198,19 @@
 
 	<script type="text/html" id="barDemo1">
   <a class="layui-btn layui-btn-xs" lay-event="edit">工具性按钮</a>
+</script>
+<script type="text/html" id="bardate">
+  <div class="layui-form"   >
+	<div class="layui-layer-title" style="cursor: move;">
+回访患者姓名:【<$=name$>】</div>
+<div class="layui-form-item layui-form-text" style="margin-top: 10px;">
+<label class="layui-form-label">回访内容</label>
+<div class="layui-input-block">
+<textarea  id="thearea"  placeholder="请输入内容" style="width:80%;" class="layui-textarea backcomment">
+</textarea></div></div><div class="layui-form-item layui-form-text">
+<label class="layui-form-label">回访结果</label><div class="layui-input-block">
+<textarea placeholder="请输入内容"  style="width:80%;" class="layui-textarea backresult">
+</textarea></div></div></div>
 </script>
 
 

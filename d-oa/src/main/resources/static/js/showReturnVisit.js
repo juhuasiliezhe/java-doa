@@ -127,7 +127,16 @@ function tableonthis(table){
 		  });
 		});
 }
-function getApp(id,name){
+
+function getValue(name,backcomment){
+	var data={
+			name:name
+	}
+	ShowDataLoad(data,".balances","bardate");
+	$("#thearea").val(backcomment)
+}
+function getApp(id,name,backcomment){
+	getValue(name,backcomment);
 	layer.open({
 		type: 1
 		,title: false //不显示标题栏
@@ -138,8 +147,8 @@ function getApp(id,name){
 		,btn: ['完成回访', '取消回访']
 		,btnAlign: 'c'
 		,moveType: 1 //拖拽模式，0或者1
-		,content: '<div class="layui-form"   ><div class="layui-layer-title" style="cursor: move;">回访患者姓名:【'+name+'】</div><div class="layui-form-item layui-form-text" style="margin-top: 10px;"><label class="layui-form-label">回访内容</label><div class="layui-input-block"><textarea  placeholder="请输入内容" style="width:80%;" class="layui-textarea backcomment"></textarea></div></div><div class="layui-form-item layui-form-text"><label class="layui-form-label">回访结果</label><div class="layui-input-block"><textarea placeholder="请输入内容"  style="width:80%;" class="layui-textarea backresult"></textarea></div></div>	            	   </div>',
-		yes: function(index, layero){
+		,content: $(".balances")
+		,yes: function(index, layero){
 			var backcomment=$(".backcomment").val();
 			var backresult=$(".backresult").val();
 

@@ -239,8 +239,10 @@ public class DAppointmentController extends BaseController {
     	LayDates dates=new LayDates(0,"",total,dPatients);
     	
     	sendOutPrint1(dates);
-//    	pageOutPrint((Page) dPatients);
     }
+    
+    
+    
 
 
 

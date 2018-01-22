@@ -40,6 +40,10 @@
 	        })
 	        cliconlogin();
 
+	        if (window != top) {
+				top.location.href = location.href;
+			}
+
 	        $("body").keydown(function(e){
 	            if(e.keyCode=="13"){//回车键的键值为13
 	                formdate();//调用登录按钮的登录事件
