@@ -68,6 +68,11 @@ public class Application extends WebMvcConfigurerAdapter implements CommandLineR
 
         return  "back/login";
     }
+    @GetMapping("learn")
+    public String  learn() {
+    	
+    	return  "back/learning";
+    }
     //显示声明CommonsMultipartResolver为mutipartResolver
     /**
      * 文件上传配置
