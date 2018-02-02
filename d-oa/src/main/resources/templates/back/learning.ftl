@@ -32,7 +32,7 @@
 					</div>
 					
 				</div>
-				<div id="mytest" style='font-size: 173px;'></div>
+				<div id="mytest" style='font-size: 113px;'></div>
 
 			</div>
 		</div>
