@@ -127,7 +127,7 @@ public class DPatientController extends BaseController {
      */
     @PostMapping("/showPatient")
     public void   showPatient(LaytableDate data) {
-    	List<DPatient> dPatients = dPService.queryAllPatient(GetCurUser().getId(),data.getPage(), data.getLimit(), data.getOrder());
+    	List<DPatient> dPatients = dPService.queryAllPatient(GetCurUser().getId(),data.getPage(), data.getLimit(), data.getOrder(),data.getName());
     	Page<DPatient> listCountry = (Page<DPatient>)dPatients;
     	long total = listCountry.getTotal();
     	LayDates dates=new LayDates(0,"",total,dPatients);

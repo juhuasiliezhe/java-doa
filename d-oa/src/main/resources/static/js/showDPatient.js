@@ -63,6 +63,8 @@ function submitUpdata(name){
 function statusGet(){
 
 	$("#querydata").click(function(){
+		
+		
 		var table = layui.table;
 		tableReload(table)
 	});

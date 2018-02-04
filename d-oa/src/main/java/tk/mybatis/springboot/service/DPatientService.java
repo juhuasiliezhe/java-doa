@@ -20,7 +20,7 @@ public   interface  DPatientService {
      * @param order
      * @return
      */
-    public List<DPatient> queryAllPatient(int did,int pageNum, int pageSize, String order);
+    public List<DPatient> queryAllPatient(int did,int pageNum, int pageSize, String order,String name);
 	/**
 	 * 根据Id查询患者信息；
 	 *@param id

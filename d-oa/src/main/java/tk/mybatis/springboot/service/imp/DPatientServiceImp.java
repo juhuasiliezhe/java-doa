@@ -24,11 +24,20 @@ public class DPatientServiceImp  implements DPatientService{
     private DPatientMapper dPatientMapper;
 
 
-    public List<DPatient> queryAllPatient( int did,int pageNum,int pageSize,String order){
+    public List<DPatient> queryAllPatient( int did,int pageNum,int pageSize,String order,String name){
         PageHelper page=new PageHelper();
         page.startPage(pageNum, pageSize);
-        List<DPatient> allByOrder = dPatientMapper.findAllByOrder(order,did);
-        return  allByOrder;
+        DPatientExample example=new DPatientExample();
+    	Criteria createCriteria = example.createCriteria();
+    	createCriteria.andDidEqualTo(did);
+    	example.setOrderByClause(order);
+    	if (name.length()>0) {
+    		createCriteria.andNameLike("%"+name+"%");
+			
+		}
+//        List<DPatient> allByOrder = dPatientMapper.findAllByOrder(order,did);
+    	List<DPatient> selectByExample = dPatientMapper.selectByExample(example);
+        return  selectByExample;
     }
     public DPatient queryOnePatient( int id){
     	DPatientExample example=new DPatientExample();
