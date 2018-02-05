@@ -18,7 +18,7 @@
 
 </head>
 <body>
-	<div class="layui-row">
+	<!-- <div class="layui-row">
 		<div class="layui-col-md12">
 			<div class="layui-form" style="text-align: center;margin-top: 10%;margin-right: 36%;">
 
@@ -36,7 +36,8 @@
 
 			</div>
 		</div>
-	</div>
+	</div> -->
+	<button class="layui-btn" id="querydata2">导出</button>
 
 
 
@@ -56,8 +57,7 @@
 		randomList();
 
 	});
-
-		
+		 
 		function randomList(){
 			$("#querydata").click(function(){
 				type=$("input[type='radio']:checked").val()
@@ -71,11 +71,8 @@
 				}else{
 					$("#mytest").html(all[Math.floor(Math.random()*all.length)])
 				}
-				
-				 
-				
-	
 			})
+				
 		}
 		
 	</script>
